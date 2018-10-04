@@ -30,7 +30,7 @@ passwd
 cd /opt/arch_install
 echo_sleep "Install base packages..."
 pacman --noconfirm -S $(cat packages/base)
-echo_sleep "Install extra packages"
+echo_sleep "Install extra packages..."
 pacman --noconfirm -S $(cat packages/extra)
 
 echo_sleep "Install grub..."
@@ -114,6 +114,12 @@ sudo -u vuk gpg --recv-key 702353E0F7E48EDB
 sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_extra)
 cd /opt
 rm -rf /opt/arch_install
+
+echo_sleep "Remove unneeded packages..."
+pacman -Rs $(pacman -Qtdq)
+
+echo_sleep "Clean pacman cache..."
+rm -rf /var/cache/pacman/pkg/*
 
 echo_sleep "Setup oh-my-zsh for user..."
 cd /home/vuk
