@@ -1,0 +1,1 @@
+0   22   *   *   *   /usr/local/bin/backup.sh &> /home/vuk/backup.txt

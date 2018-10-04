@@ -1,0 +1,1 @@
+0   22  *   *   *   pacman -Sy && pacman -Qu | wc -l | sudo -u vuk tee /home/vuk/.updates
