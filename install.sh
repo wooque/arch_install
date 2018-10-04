@@ -54,8 +54,7 @@ cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 sed -i 's/#autologin-user=/autologin-user=vuk/' /etc/lightdm/lightdm.conf
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
 
-echo_sleep "Setup cron and backup..."
-cp backup.sh /usr/local/bin/backup.sh
+echo_sleep "Setup cron..."
 cp crontab /var/spool/cron/vuk
 cp root_crontab /var/spool/cron/root
 ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
