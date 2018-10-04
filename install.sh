@@ -124,5 +124,5 @@ sudo -u vuk git init
 sudo -u vuk git remote add origin https://github.com/wooque/configs
 sudo -u vuk git fetch --all
 sudo -u vuk git reset --hard origin/master
-sudo -u vuk git checkout master
+sudo -u vuk git branch --set-upstream-to=origin/master master
 sudo -u vuk git remote set-url origin git@github.com:wooque/configs.git
