@@ -16,10 +16,10 @@ sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 locale-gen
 
 echo_sleep "Set locale..."
-echo_sleep "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 echo_sleep "Set hostname..."
-echo_sleep "battlestation" > /etc/hostname
+echo "battlestation" > /etc/hostname
 
 #echo_sleep "Create initial ramdisk..."
 #mkinitcpio -p linux
@@ -42,7 +42,7 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="elevator=deadline"/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo_sleep "Create user"
+echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 groupadd autologin
 useradd -g wheel -G autologin,docker,vboxusers -m vuk
