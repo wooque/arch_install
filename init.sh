@@ -2,7 +2,7 @@
 
 echo_sleep () { 
     echo $1 
-    sleep 0.5 
+    sleep 1 
 }
 
 echo_sleep "Set ntp..."
