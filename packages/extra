@@ -1,11 +1,13 @@
 docker-compose
 gimp
 go
+ipython
 nodejs
 npm
 pgadmin3
 postgresql 
 python-pip
+python-pylint
 python-virtualenv
 sqlitebrowser
 virtualbox 
