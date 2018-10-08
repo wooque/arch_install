@@ -4,7 +4,6 @@ audacious
 baobab
 bind-tools
 cloc
-compton
 cronie
 dialog
 dosfstools
@@ -34,7 +33,6 @@ libva-intel-driver
 libva-mesa-driver
 libva-utils 
 lightdm-gtk-greeter 
-lxterminal 
 meld
 mlocate
 mpg123
@@ -53,12 +51,14 @@ pcmanfm
 powertop 
 ps_mem 
 pulseaudio
+pulseaudio-alsa
 qt5ct 
 qt5-styleplugins
 ranger 
 redshift 
 rofi
 rsync
+rxvt-unicode
 screenfetch 
 scrot
 seahorse
@@ -71,6 +71,7 @@ ttf-liberation
 unrar
 vim 
 wget 
+xf86-video-intel
 xorg-server 
 xorg-xauth 
 xorg-xbacklight 
