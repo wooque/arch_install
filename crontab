@@ -1,1 +1,1 @@
-0   22  *   *   *   /home/vuk/.scripts/backup.sh &> /home/vuk/backup.txt
+0   22  *   *   *   /home/vuk/.scripts/backup.sh &> /home/vuk/backup.txt && /home/vuk/.scripts/refresh_i3status.sh
