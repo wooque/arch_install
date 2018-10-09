@@ -80,6 +80,7 @@ xorg-xinput
 xorg-xkill 
 xorg-xmodmap 
 xorg-xrdb
+xss-lock
 youtube-dl
 zathura
 zathura-djvu
