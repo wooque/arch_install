@@ -11,6 +11,10 @@ ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
 echo_sleep "Sync hardware clock..."
 hwclock --systohc
 
+echo_sleep "Setup network time sync..."
+mkdir /etc/systemd/system/sysinit.target.wants
+ln -sf /usr/lib/systemd/system/systemd-timesyncd.service /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service
+
 echo_sleep "Generate locale..."
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 locale-gen
