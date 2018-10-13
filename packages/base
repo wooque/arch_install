@@ -30,8 +30,6 @@ intel-ucode
 iotop
 libreoffice-fresh
 libva-intel-driver
-libva-mesa-driver
-libva-utils 
 lightdm-gtk-greeter 
 meld
 mlocate
