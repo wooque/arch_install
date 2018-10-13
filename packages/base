@@ -18,7 +18,6 @@ gnome-keyring
 gparted
 gtk-engine-murrine
 gvfs
-gvfs-gphoto2
 gvfs-mtp
 highlight
 htop 
@@ -35,7 +34,6 @@ meld
 mlocate
 mpg123
 mpv
-neofetch 
 net-tools
 network-manager-applet 
 networkmanager-openconnect
@@ -57,7 +55,6 @@ redshift
 rofi
 rsync
 rxvt-unicode
-screenfetch 
 scrot
 seahorse
 sxiv
@@ -71,12 +68,7 @@ vim
 wget 
 xf86-video-intel
 xorg-server 
-xorg-xauth 
 xorg-xbacklight 
-xorg-xinit 
-xorg-xinput 
-xorg-xkill 
-xorg-xmodmap 
 xorg-xrdb
 xss-lock
 youtube-dl
