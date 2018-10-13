@@ -55,7 +55,6 @@ ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manag
 
 echo_sleep "Setup cron..."
 cp crontab /var/spool/cron/vuk
-cp root_crontab /var/spool/cron/root
 ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
 
 echo_sleep "Setup networkmanager..."
