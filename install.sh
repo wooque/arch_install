@@ -25,9 +25,6 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo_sleep "Set hostname..."
 echo "battlestation" > /etc/hostname
 
-#echo_sleep "Create initial ramdisk..."
-#mkinitcpio -p linux
-
 echo "Enter password for root"
 passwd
 
@@ -48,15 +45,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-groupadd autologin
-useradd -g wheel -G autologin,docker,vboxusers -m vuk
+useradd -g wheel -G docker,vboxusers -m vuk
 echo "Enter password for vuk"
 passwd vuk
 
 echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-# enable this for autologin
-#sed -i 's/#autologin-user=/autologin-user=vuk/' /etc/lightdm/lightdm.conf
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
 
 echo_sleep "Setup cron..."
