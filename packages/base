@@ -68,6 +68,7 @@ wget
 xf86-video-intel
 xorg-server 
 xorg-xbacklight 
+xorg-xinput
 xorg-xrdb
 xss-lock
 youtube-dl
