@@ -1,1 +1,1 @@
-LABEL=PODACI                              /mnt/PODACI    ext4    defaults,noatime,x-gvfs-show 0 0
+LABEL=PODACI                                /mnt/PODACI ext4        noatime,x-gvfs-show 0 0
