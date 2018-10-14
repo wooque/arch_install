@@ -19,7 +19,7 @@ pacstrap /mnt base base-devel
 
 echo_sleep "Gen fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
-sed -i 's/rw,relatime/rw,noatime/' /mnt/etc/fstab
+sed -i 's/relatime/noatime/' /mnt/etc/fstab
 
 echo_sleep "Copy scripts to /opt..."
 cp -r arch_install /mnt/opt/arch_install
