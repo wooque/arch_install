@@ -45,7 +45,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-useradd -g wheel -G docker,vboxusers -m vuk
+useradd -g wheel -G docker -m vuk
 echo "Enter password for vuk"
 passwd vuk
 

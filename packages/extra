@@ -10,5 +10,3 @@ python-pip
 python-pylint
 python-virtualenv
 sqlitebrowser
-virtualbox 
-virtualbox-host-modules-arch
