@@ -64,7 +64,8 @@ ttf-dejavu
 ttf-droid
 ttf-liberation
 unrar
-vim 
+vim
+w3m
 wget 
 xf86-video-intel
 xorg-server 
