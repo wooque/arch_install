@@ -29,10 +29,8 @@ echo "Enter password for root"
 passwd
 
 cd /opt/arch_install
-echo_sleep "Install base packages..."
-pacman --noconfirm -S $(cat packages/base)
-echo_sleep "Install extra packages..."
-pacman --noconfirm -S $(cat packages/extra)
+echo_sleep "Install packages..."
+pacman --noconfirm -S $(cat packages/official)
 
 echo_sleep "Install grub..."
 pacman -S --noconfirm grub os-prober
@@ -97,7 +95,7 @@ rm -rf /opt/build
 
 echo_sleep "Install AUR base packages..."
 cd /opt/arch_install
-sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_base)
+sudo -u vuk yaourt -S --noconfirm $(cat packages/aur)
 ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 sed -i 's/Exec=\/usr\/bin\/chromium %U/Exec=\/usr\/bin\/chromium %U --password-store=gnome/' /usr/share/applications/chromium.desktop
 
@@ -105,11 +103,6 @@ echo_sleep "Install AUR conflict packages..."
 sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_conflict)
 yes | pacman -U $(find /tmp/yaourt-tmp-vuk -name "freetype2-ultimate5*.pkg.tar.xz")
 
-
-echo_sleep "Install AUR extra packages..."
-# for ncurses needed for VMWare player
-sudo -u vuk gpg --recv-key 702353E0F7E48EDB
-sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_extra)
 cd /opt
 rm -rf /opt/arch_install
 
