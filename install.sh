@@ -97,7 +97,6 @@ echo_sleep "Install AUR base packages..."
 cd /opt/arch_install
 sudo -u vuk yaourt -S --noconfirm $(cat packages/aur)
 ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
-sed -i 's/Exec=\/usr\/bin\/chromium %U/Exec=\/usr\/bin\/chromium %U --password-store=gnome/' /usr/share/applications/chromium.desktop
 
 echo_sleep "Install AUR conflict packages..."
 sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_conflict)
