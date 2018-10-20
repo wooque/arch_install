@@ -30,7 +30,7 @@ passwd
 
 cd /opt/arch_install
 echo_sleep "Install packages..."
-pacman --noconfirm -S $(cat packages/official)
+pacman --noconfirm -S $(cat packages)
 
 echo_sleep "Install grub..."
 pacman -S --noconfirm grub os-prober
@@ -93,13 +93,13 @@ pacman -U --noconfirm $(find . -name "yaourt*.pkg.tar.xz")
 cd /opt
 rm -rf /opt/build
 
-echo_sleep "Install AUR base packages..."
+echo_sleep "Install AUR packages..."
 cd /opt/arch_install
-sudo -u vuk yaourt -S --noconfirm $(cat packages/aur)
+sudo -u vuk yaourt -S --noconfirm $(cat packages_aur)
 ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 
-echo_sleep "Install AUR conflict packages..."
-sudo -u vuk yaourt -S --noconfirm $(cat packages/aur_conflict)
+echo_sleep "Install freetype2-ultimate5 from AUR..."
+sudo -u vuk yaourt -S --noconfirm freetype2-ultimate5
 yes | pacman -U $(find /tmp/yaourt-tmp-vuk -name "freetype2-ultimate5*.pkg.tar.xz")
 
 cd /opt
