@@ -75,6 +75,7 @@ ttf-dejavu
 ttf-droid
 ttf-liberation
 unrar
+unzip
 vim
 w3m
 wget 
@@ -89,4 +90,5 @@ youtube-dl
 zathura
 zathura-djvu
 zathura-pdf-poppler
+zip
 zsh 
