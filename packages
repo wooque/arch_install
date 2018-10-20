@@ -12,7 +12,6 @@ dunst
 expac
 faad2
 feh
-file-roller
 gimp
 git
 gnome-calculator
@@ -79,6 +78,7 @@ unrar
 vim
 w3m
 wget 
+xarchiver
 xf86-video-intel
 xorg-server 
 xorg-xbacklight 
