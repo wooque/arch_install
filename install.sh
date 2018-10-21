@@ -76,31 +76,17 @@ mkdir /mnt/PODACI
 chown vuk:wheel /mnt/PODACI
 cat fstab >> /etc/fstab
 
-echo_sleep "Install yaourt..."
-cd /opt
-mkdir build
-chown vuk:wheel build
-cd build
+chown -R vuk:wheel /opt/arch_install
+cd /opt/arch_install
 
-wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=package-query" -O PKGBUILD
-sudo -u vuk makepkg -s
-pacman -U --noconfirm $(find . -name "package-query*.pkg.tar.xz")
-
-wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yaourt" -O PKGBUILD
-sudo -u vuk makepkg -s
-pacman -U --noconfirm $(find . -name "yaourt*.pkg.tar.xz")
-
-cd /opt
-rm -rf /opt/build
+echo_sleep "Install yay..."
+sed -i 's/#Color/Color/' /etc/pacman.conf
+wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" -O PKGBUILD
+sudo -u vuk sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
-cd /opt/arch_install
-sudo -u vuk yaourt -S --noconfirm $(cat packages_aur)
+sudo -u vuk sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
 ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
-
-echo_sleep "Install freetype2-ultimate5 from AUR..."
-sudo -u vuk yaourt -S --noconfirm freetype2-ultimate5
-yes | pacman -U $(find /tmp/yaourt-tmp-vuk -name "freetype2-ultimate5*.pkg.tar.xz")
 
 cd /opt
 rm -rf /opt/arch_install
