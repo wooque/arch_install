@@ -28,9 +28,11 @@ echo "battlestation" > /etc/hostname
 echo "Enter password for root"
 passwd
 
-cd /opt/arch_install
-echo_sleep "Install packages..."
-pacman --noconfirm -S $(cat packages)
+echo_sleep "Create user..."
+sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+useradd -g wheel -m vuk
+echo "Enter password for vuk"
+passwd vuk
 
 echo_sleep "Install grub..."
 pacman -S --noconfirm grub os-prober
@@ -41,11 +43,10 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="elevator=deadline"/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo_sleep "Create user..."
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-useradd -g wheel -G docker -m vuk
-echo "Enter password for vuk"
-passwd vuk
+cd /opt/arch_install
+echo_sleep "Install packages..."
+pacman --noconfirm -S $(cat packages)
+usermod -a -G docker vuk
 
 echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
@@ -93,9 +94,6 @@ ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 
 cd /opt
 rm -rf /opt/arch_install
-
-echo_sleep "Remove unneeded packages..."
-pacman -Rs $(pacman -Qtdq)
 
 echo_sleep "Clean pacman cache..."
 rm -rf /var/cache/pacman/pkg/*
