@@ -71,6 +71,9 @@ ln -sf /usr/lib/systemd/system/tlp.service /etc/systemd/system/multi-user.target
 mkdir /etc/systemd/system/sleep.target.wants
 ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.target.wants/tlp-sleep.service
 
+echo_sleep "Disable pc speaker..."
+echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
 chown vuk:wheel /mnt/PODACI
