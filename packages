@@ -21,6 +21,7 @@ gparted
 gtk-engine-murrine
 gvfs
 gvfs-mtp
+gvim
 highlight
 htop 
 i3-gaps 
@@ -76,7 +77,6 @@ ttf-droid
 ttf-liberation
 unrar
 unzip
-vim
 w3m
 wget 
 xarchiver
