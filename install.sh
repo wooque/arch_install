@@ -95,8 +95,9 @@ ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 cd /opt
 rm -rf /opt/arch_install
 
-echo_sleep "Clean pacman cache..."
+echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
+rm -rf /home/vuk/.cache/yay/*
 
 echo_sleep "Setup oh-my-zsh for user..."
 cd /home/vuk
