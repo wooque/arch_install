@@ -75,6 +75,9 @@ ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.targe
 echo_sleep "Disable pc speaker..."
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
+echo_sleep "Limit systemd journald log size"
+sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
+
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
 chown vuk:wheel /mnt/PODACI
