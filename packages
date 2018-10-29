@@ -1,9 +1,9 @@
 acpi
 arc-gtk-theme 
-audacious
 baobab
 bind-tools
 cloc
+cmus
 cronie
 dialog
 docker-compose
@@ -31,12 +31,12 @@ imagemagick
 intel-ucode 
 iotop
 ipython
+libmad
 libreoffice-fresh
 libva-intel-driver
 lightdm-gtk-greeter 
 meld
 mlocate
-mpg123
 mpv
 net-tools
 network-manager-applet 
