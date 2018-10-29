@@ -1,4 +1,6 @@
 acpi
+android-udev
+android-file-transfer
 arc-gtk-theme 
 baobab
 bind-tools
@@ -19,8 +21,6 @@ gnome-keyring
 go
 gparted
 gtk-engine-murrine
-gvfs
-gvfs-mtp
 gvim
 highlight
 htop 
@@ -49,7 +49,6 @@ pacman-contrib
 pamixer
 papirus-icon-theme 
 pavucontrol 
-pcmanfm
 pgadmin3
 postgresql 
 powertop 
@@ -77,6 +76,7 @@ transmission-gtk
 ttf-dejavu
 ttf-droid
 ttf-liberation
+udevil
 unrar
 unzip
 w3m

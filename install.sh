@@ -46,7 +46,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 cd /opt/arch_install
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat packages)
-usermod -a -G docker vuk
+usermod -aG docker,adbusers vuk
 
 echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
