@@ -1,4 +1,3 @@
-acpi
 android-udev
 android-file-transfer
 arc-gtk-theme
@@ -57,7 +56,6 @@ powertop
 ps_mem
 pulseaudio
 pulseaudio-alsa
-python-pip
 python-pylint
 python-rope
 python-virtualenv
@@ -69,7 +67,6 @@ rofi
 rsync
 rxvt-unicode
 scrot
-seahorse
 sqlitebrowser
 sxiv
 tk
