@@ -8,7 +8,6 @@ cmus
 cronie
 dialog
 docker
-docker-compose
 dosfstools
 dunst
 expac
@@ -43,7 +42,6 @@ mpv
 net-tools
 networkmanager
 nodejs
-noto-fonts
 npm
 p7zip
 pacman-contrib
