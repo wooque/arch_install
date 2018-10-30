@@ -52,16 +52,20 @@ echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
 
-echo_sleep "Setup cron..."
-cp crontab /var/spool/cron/vuk
-ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
-
 echo_sleep "Setup networkmanager..."
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
 mkdir /etc/systemd/system/network-online.target.wants
 ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
+
+echo_sleep "Setup cron..."
+cp crontab /var/spool/cron/vuk
+ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
+
+echo_sleep "Setup devmon..."
+sed -i 's/ARGS=""/ARGS="-s"/' /etc/conf.d/devmon
+ln -sf /usr/lib/systemd/system/devmon@.service /etc/systemd/system/multi-user.target.wants/devmon@vuk.service
 
 echo_sleep "Setup fstrim..."
 mkdir /etc/systemd/system/timers.target.wants
