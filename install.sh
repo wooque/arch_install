@@ -76,6 +76,9 @@ ln -sf /usr/lib/systemd/system/tlp.service /etc/systemd/system/multi-user.target
 mkdir /etc/systemd/system/sleep.target.wants
 ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.target.wants/tlp-sleep.service
 
+echo_sleep "Fix screen tearing..."
+cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
+
 echo_sleep "Disable pc speaker..."
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
