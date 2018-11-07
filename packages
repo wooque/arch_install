@@ -45,15 +45,14 @@ nodejs
 npm
 p7zip
 pacman-contrib
-pamixer
 papirus-icon-theme
-pavucontrol
 pgadmin4
 postgresql
 powertop
 ps_mem
 pulseaudio
 pulseaudio-alsa
+pulsemixer
 python-pylint
 python-rope
 python-virtualenv
