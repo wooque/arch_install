@@ -87,6 +87,6 @@ xss-lock
 youtube-dl
 zathura
 zathura-djvu
-zathura-pdf-poppler
+zathura-pdf-mupdf
 zip
 zsh
