@@ -10,6 +10,7 @@ dialog
 docker
 dosfstools
 dunst
+eslint
 expac
 faad2
 feh
