@@ -94,6 +94,10 @@ cd /opt/arch_install
 
 echo_sleep "Add maximbaz repo..."
 echo -e "[maximbaz]\nServer = https://pkgbuild.com/~maximbaz/repo/" >> /etc/pacman.conf
+pacman -Syy
+
+echo_sleep "Install packages from maximbaz repo..."
+pacman --noconfirm -S $(cat packages_maximbaz)
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
