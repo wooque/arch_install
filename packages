@@ -57,6 +57,7 @@ pulsemixer
 python-pylint
 python-rope
 python-virtualenv
+qrencode
 qt5ct
 qt5-styleplugins
 ranger
@@ -79,6 +80,7 @@ unzip
 w3m
 wget
 xarchiver
+xclip
 xf86-video-intel
 xorg-server
 xorg-xbacklight
