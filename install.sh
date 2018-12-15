@@ -98,6 +98,7 @@ pacman -Syy
 
 echo_sleep "Install packages from maximbaz repo..."
 pacman --noconfirm -S $(cat packages_maximbaz)
+ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
@@ -106,7 +107,6 @@ sudo -u vuk sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
 sudo -u vuk sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
-ln -sf ../conf.avail/75-emojione.conf /etc/fonts/conf.d/75-emojione.conf
 
 cd /opt
 rm -rf /opt/arch_install
