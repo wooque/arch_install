@@ -53,6 +53,7 @@ powertop
 ps_mem
 pulseaudio
 pulseaudio-alsa
+pulseaudio-equalizer-ladspa
 pulsemixer
 python-pylint
 python-rope
