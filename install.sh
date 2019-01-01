@@ -47,6 +47,9 @@ echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat packages)
 usermod -aG docker,adbusers vuk
 
+echo_sleep "Remove gsfonts..."
+pacman -Rdd gsfonts
+
 echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
