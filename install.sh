@@ -45,7 +45,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 cd /opt/arch_install
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat packages)
-usermod -aG docker,adbusers vuk
+usermod -aG adbusers vuk
 
 echo_sleep "Remove gsfonts..."
 pacman -Rdd gsfonts
