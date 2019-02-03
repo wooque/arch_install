@@ -48,7 +48,7 @@ pacman --noconfirm -S $(cat packages)
 usermod -aG adbusers vuk
 
 echo_sleep "Remove gsfonts..."
-pacman -Rdd gsfonts
+pacman --noconfirm -Rdd gsfonts
 
 echo_sleep "Setup lighdm..."
 cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
