@@ -59,6 +59,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-equalizer-ladspa
 pulsemixer
+python-i3-py
 python-pylint
 python-rope
 python-virtualenv
@@ -91,6 +92,7 @@ xf86-video-intel
 xorg-server
 xorg-xbacklight
 xorg-xinput
+xorg-xprop
 xorg-xrdb
 xss-lock
 youtube-dl
