@@ -61,7 +61,6 @@ pulseaudio-equalizer-ladspa
 pulsemixer
 python-i3-py
 python-pylint
-python-rope
 python-virtualenv
 qrencode
 qt5ct
