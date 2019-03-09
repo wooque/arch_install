@@ -1,2 +1,2 @@
-0   22  *   *   *   /home/vuk/.scripts/backup &> /home/vuk/backup.txt && /home/vuk/.scripts/i3status_refresh
-0   22  *   *   *   checkupdates | wc -l > /home/vuk/.updates
+0   22  *   *   *   "$HOME/.scripts/backup" &> "$HOME/backup.txt" && "$HOME/.scripts/i3status_refresh"
+0   22  *   *   *   checkupdates | wc -l > "$HOME/.updates"
