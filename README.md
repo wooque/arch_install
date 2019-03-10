@@ -4,13 +4,14 @@ Partion disk:
 
 `fdisk /dev/sda`
 
-Bootstrap inital env on /dev/sda1:
+Bootstrap inital env on /dev/sda1 (default):
 
-`./init.sh /dev/sda1`
+`./init.sh [/dev/sda1]`
 
-When in chroot run full install (user is username, /dev/sda is location where GRUB should be installed):
+When in chroot run full install.
+vuk is default username, /dev/sda is default location where GRUB should be installed:
 
-`/opt/arch_install/install.sh user /dev/sda`
+`/opt/arch_install/install.sh [vuk] [/dev/sda]`
 
 # Possible problems
 
