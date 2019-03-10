@@ -5,7 +5,7 @@ echo_sleep () {
     sleep 1
 }
 
-NEWUSER="vuk"
+NEWUSER=${1:-"vuk"}
 
 echo_sleep "Set timezone..."
 ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
