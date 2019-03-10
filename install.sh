@@ -5,6 +5,8 @@ echo_sleep () {
     sleep 1
 }
 
+NEWUSER="vuk"
+
 echo_sleep "Set timezone..."
 ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
 
@@ -30,9 +32,9 @@ passwd
 
 echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-useradd -g wheel -m vuk
-echo "Enter password for vuk"
-passwd vuk
+useradd -g wheel -m $NEWUSER
+echo "Enter password for $NEWUSER"
+passwd $NEWUSER
 
 echo_sleep "Install grub..."
 pacman -S --noconfirm grub os-prober
@@ -45,7 +47,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 cd /opt/arch_install
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat packages)
-usermod -aG adbusers vuk
+usermod -aG adbusers $NEWUSER
 
 echo_sleep "Remove gsfonts..."
 pacman --noconfirm -Rdd gsfonts
@@ -62,12 +64,12 @@ mkdir /etc/systemd/system/network-online.target.wants
 ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
 
 echo_sleep "Setup cron..."
-cp crontab /var/spool/cron/vuk
+cp crontab "/var/spool/cron/$NEWUSER"
 ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
 
 echo_sleep "Setup devmon..."
 sed -i 's/ARGS=""/ARGS="-s"/' /etc/conf.d/devmon
-ln -sf /usr/lib/systemd/system/devmon@.service /etc/systemd/system/multi-user.target.wants/devmon@vuk.service
+ln -sf /usr/lib/systemd/system/devmon@.service "/etc/systemd/system/multi-user.target.wants/devmon@$NEWUSER.service"
 
 echo_sleep "Setup fstrim..."
 mkdir /etc/systemd/system/timers.target.wants
@@ -89,35 +91,35 @@ sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
-chown vuk:wheel /mnt/PODACI
+chown $NEWUSER:wheel /mnt/PODACI
 cat fstab >> /etc/fstab
 
-chown -R vuk:wheel /opt/arch_install
+chown -R $NEWUSER:wheel /opt/arch_install
 cd /opt/arch_install
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
 wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" -O PKGBUILD
-sudo -u vuk sh -c "yes | makepkg -si"
+sudo -u $NEWUSER sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
-sudo -u vuk sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
+sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
 
 cd /opt
 rm -rf /opt/arch_install
 
 echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
-rm -rf /home/vuk/.cache/yay/*
+rm -rf "/home/$NEWUSER/.cache/yay/*"
 
 echo_sleep "Setup oh-my-zsh for user..."
-cd /home/vuk
-sudo -u vuk sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+cd "/home/$NEWUSER"
+sudo -u $NEWUSER sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 echo_sleep "Fetch configs for user..."
-sudo -u vuk git init
-sudo -u vuk git remote add origin https://github.com/wooque/configs
-sudo -u vuk git fetch --all
-sudo -u vuk git reset --hard origin/master
-sudo -u vuk git branch --set-upstream-to=origin/master master
-sudo -u vuk git remote set-url origin git@github.com:wooque/configs.git
+sudo -u $NEWUSER git init
+sudo -u $NEWUSER git remote add origin https://github.com/wooque/configs
+sudo -u $NEWUSER git fetch --all
+sudo -u $NEWUSER git reset --hard origin/master
+sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
+sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
