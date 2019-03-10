@@ -6,6 +6,7 @@ echo_sleep () {
 }
 
 NEWUSER=${1:-"vuk"}
+DISK=${2:-"/dev/sda"}
 
 echo_sleep "Set timezone..."
 ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
@@ -38,7 +39,7 @@ passwd $NEWUSER
 
 echo_sleep "Install grub..."
 pacman -S --noconfirm grub os-prober
-grub-install /dev/sda
+grub-install $DISK
 
 echo_sleep "Create grub.cfg..."
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
