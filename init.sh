@@ -24,7 +24,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 sed -i 's/relatime/noatime/' /mnt/etc/fstab
 
 echo_sleep "Copy scripts to /opt..."
-cp -r arch_install /mnt/opt/arch_install
+cp -r . /mnt/opt/arch_install
 
 echo_sleep "Chroot..."
 arch-chroot /mnt
