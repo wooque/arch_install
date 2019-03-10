@@ -4,6 +4,8 @@ Partion disk:
 
 `fdisk /dev/sda`
 
+Usefull commans: `n` new partition, `a` set bootable flag, `w` write changes to disk
+
 Bootstrap inital env on `/dev/sda1` (default):
 
 `./init.sh [/dev/sda1]`
