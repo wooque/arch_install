@@ -5,11 +5,13 @@ echo_sleep () {
     sleep 1
 }
 
-NEWUSER=${1:-"vuk"}
-DISK=${2:-"/dev/sda"}
+DISK=${1:-"/dev/sda"}
+NEWUSER=${2:-"vuk"}
+TIMEZONE="/usr/share/zoneinfo/Europe/Belgrade"
+HOSTNAME="battlestation"
 
 echo_sleep "Set timezone..."
-ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
+ln -sf $TIMEZONE /etc/localtime
 
 echo_sleep "Sync hardware clock..."
 hwclock --systohc
@@ -26,7 +28,7 @@ echo_sleep "Set locale..."
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 echo_sleep "Set hostname..."
-echo "battlestation" > /etc/hostname
+echo $HOSTNAME > /etc/hostname
 
 echo "Enter password for root"
 passwd

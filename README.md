@@ -11,9 +11,9 @@ Bootstrap inital env on `/dev/sda1` (default):
 `./init.sh [/dev/sda1]`
 
 When in chroot run full install.
-`vuk` is default username, `/dev/sda` is default location where GRUB should be installed:
+`/dev/sda` is default location where GRUB should be installed, `vuk` is default username:
 
-`/opt/arch_install/install.sh [vuk] [/dev/sda]`
+`/opt/arch_install/install.sh [/dev/sda vuk]`
 
 ## Possible problems
 
