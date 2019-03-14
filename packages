@@ -1,7 +1,6 @@
 android-udev
 android-file-transfer
 arc-gtk-theme
-baobab
 bind-tools
 chromium
 cloc
@@ -43,6 +42,7 @@ lightdm-gtk-greeter
 meld
 mlocate
 mpv
+ncdu
 net-tools
 networkmanager
 nodejs
