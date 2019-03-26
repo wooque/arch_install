@@ -1,5 +1,4 @@
 android-udev
-android-file-transfer
 arc-gtk-theme
 bind-tools
 cloc
@@ -19,8 +18,6 @@ gimp
 git
 gnome-keyring
 go
-gparted
-gtk-engine-murrine
 gvim
 highlight
 htop
@@ -60,15 +57,12 @@ pulsemixer
 python-pylint
 python-virtualenv
 qrencode
-qt5ct
-qt5-styleplugins
 ranger
 redshift
 rofi
 rsync
 rxvt-unicode
 scrot
-sqlitebrowser
 sxiv
 terminus-font
 tk
