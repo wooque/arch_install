@@ -41,6 +41,7 @@ mpv
 ncdu
 net-tools
 networkmanager
+networkmanager-openvpn
 nodejs
 noto-fonts-emoji
 npm
