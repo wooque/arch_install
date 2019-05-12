@@ -21,14 +21,12 @@ go
 gvim
 highlight
 htop
-httpie
 i3-wm
 i3lock
 i3status
 imagemagick
 intel-ucode
 iotop
-ipython
 libmad
 libmp4v2
 libreoffice-fresh
@@ -55,7 +53,6 @@ pulseaudio-alsa
 pulseaudio-equalizer-ladspa
 pulsemixer
 python-pylint
-python-virtualenv
 qrencode
 ranger
 redshift
