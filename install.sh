@@ -18,6 +18,7 @@ hwclock --systohc
 
 echo_sleep "Setup network time sync..."
 mkdir /etc/systemd/system/sysinit.target.wants
+ln -sf /usr/lib/systemd/system/systemd-timesyncd.service /etc/systemd/system/dbus-org.freedesktop.timesync1.service
 ln -sf /usr/lib/systemd/system/systemd-timesyncd.service /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service
 
 echo_sleep "Generate locale..."
@@ -60,7 +61,6 @@ cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
 
 echo_sleep "Setup networkmanager..."
-ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
 mkdir /etc/systemd/system/network-online.target.wants
