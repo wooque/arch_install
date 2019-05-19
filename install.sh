@@ -106,6 +106,8 @@ wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" -O PKGBUILD
 sudo -u $NEWUSER sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
+# Dropbox public key
+sudo -u $NEWUSER sh -c "gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E"
 sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
 
 cd /opt
