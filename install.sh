@@ -85,13 +85,13 @@ cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
 echo_sleep "Disable pc speaker..."
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
-echo_sleep "Limit systemd journald log size"
+echo_sleep "Limit systemd journald log size..."
 sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 
-echo_sleep "Disable coredump"
+echo_sleep "Disable coredump..."
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
 
-echo "Setup gnome-keyring unlock on login"
+echo "Setup gnome-keyring unlock on login..."
 sed -i '/auth       include      system-local-login/a auth       optional     pam_gnome_keyring.so' /etc/pam.d/login
 sed -i '/session    include      system-local-login/a session    optional     pam_gnome_keyring.so auto_start' /etc/pam.d/login
 
@@ -120,11 +120,11 @@ echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
 rm -rf "/home/$NEWUSER/.cache/yay/*"
 
-echo_sleep "Setup oh-my-zsh for user..."
-cd "/home/$NEWUSER"
-sudo -u $NEWUSER sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+echo_sleep "Set zsh as user shell..."
+chsh -s /usr/bin/zsh $NEWUSER
 
 echo_sleep "Fetch configs for user..."
+cd "/home/$NEWUSER"
 sudo -u $NEWUSER git init
 sudo -u $NEWUSER git remote add origin https://github.com/wooque/configs
 sudo -u $NEWUSER git fetch --all
