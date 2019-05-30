@@ -56,10 +56,6 @@ usermod -aG adbusers $NEWUSER
 echo_sleep "Remove gsfonts..."
 pacman --noconfirm -Rdd gsfonts
 
-echo_sleep "Setup lighdm..."
-cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
-
 echo_sleep "Setup networkmanager..."
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
@@ -94,6 +90,10 @@ sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 
 echo_sleep "Disable coredump"
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
+
+echo "Setup gnome-keyring unlock on login"
+sed -i '/auth       include      system-local-login/a auth       optional     pam_gnome_keyring.so' /etc/pam.d/login
+sed -i '/session    include      system-local-login/a session    optional     pam_gnome_keyring.so auto_start' /etc/pam.d/login
 
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI

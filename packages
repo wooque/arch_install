@@ -13,7 +13,6 @@ eslint
 expac
 faad2
 feh
-firefox
 gimp
 git
 gnome-keyring
@@ -31,8 +30,6 @@ libmad
 libmp4v2
 libreoffice-fresh
 libva-intel-driver
-lightdm
-lightdm-gtk-greeter
 meld
 mlocate
 mpv
@@ -78,6 +75,7 @@ xclip
 xf86-video-intel
 xorg-server
 xorg-xbacklight
+xorg-xinit
 xorg-xinput
 xorg-xrdb
 xss-lock
