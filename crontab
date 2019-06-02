@@ -1,2 +1,2 @@
 0   22  *   *   *   "$HOME/.scripts/backup" &> "$HOME/backup.log"
-0   22  *   *   *   cu=$(checkupdates); if [[ -n $cu ]]; then echo $cu > "$HOME/updates.log"; fi
+0   22  *   *   *   cu="$(checkupdates)"; if [[ -n "$cu" ]]; then echo "$cu" > "$HOME/updates.log"; fi
