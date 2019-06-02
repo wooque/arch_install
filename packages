@@ -7,12 +7,15 @@ code
 crda
 cronie
 dialog
+docker
+docker-compose
 dosfstools
 dunst
 eslint
 expac
 faad2
 feh
+firefox
 gimp
 git
 gnome-keyring
@@ -20,9 +23,9 @@ go
 gvim
 highlight
 htop
-i3-wm
 i3lock
 i3status
+i3-wm
 imagemagick
 intel-ucode
 iotop
