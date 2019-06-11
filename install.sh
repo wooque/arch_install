@@ -48,9 +48,8 @@ echo_sleep "Create grub.cfg..."
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-cd /opt/arch_install
 echo_sleep "Install packages..."
-pacman --noconfirm -S $(cat packages)
+pacman --noconfirm -S $(cat /root/arch_install/packages)
 usermod -aG adbusers,docker $NEWUSER
 
 echo_sleep "Remove gsfonts..."
@@ -123,8 +122,8 @@ sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
 sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
 
-chown -R $NEWUSER:wheel /opt/arch_install
-cd /opt/arch_install
+chown -R $NEWUSER:wheel /root/arch_install
+cd /root/arch_install
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
@@ -136,8 +135,7 @@ echo_sleep "Install AUR packages..."
 sudo -u $NEWUSER sh -c "gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E"
 sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
 
-cd /opt
-rm -rf /opt/arch_install
+rm -rf /root/arch_install
 
 echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
