@@ -122,8 +122,9 @@ sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
 sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
 
-chown -R $NEWUSER:wheel /root/arch_install
-cd /root/arch_install
+mkdir /tmp/aur
+chown $NEWUSER:wheel /tmp/aur
+cd /tmp/aur
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
@@ -133,7 +134,7 @@ sudo -u $NEWUSER sh -c "yes | makepkg -si"
 echo_sleep "Install AUR packages..."
 # Dropbox public key
 sudo -u $NEWUSER sh -c "gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E"
-sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat packages_aur)"
+sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides \$(cat /root/arch_install/packages_aur)"
 
 rm -rf /root/arch_install
 
