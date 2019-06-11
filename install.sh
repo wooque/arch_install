@@ -63,7 +63,10 @@ mkdir /etc/systemd/system/network-online.target.wants
 ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
 
 echo_sleep "Setup cron..."
-cp crontab "/var/spool/cron/$NEWUSER"
+cat >> "/var/spool/cron/$NEWUSER" << EOF
+0   22  *   *   *   "\$HOME/.scripts/backup" &> "\$HOME/backup.log"
+0   22  *   *   *   cu="\$(checkupdates)"; if [[ -n "\$cu" ]]; then echo "\$cu" > "\$HOME/updates.log"; fi
+EOF
 ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
 
 echo_sleep "Setup devmon..."
@@ -80,7 +83,13 @@ mkdir /etc/systemd/system/sleep.target.wants
 ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.target.wants/tlp-sleep.service
 
 echo_sleep "Fix screen tearing..."
-cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
+cat >> /etc/X11/xorg.conf.d/20-intel.conf << EOF
+Section "Device"
+  Identifier  "Intel Graphics"
+  Driver      "intel"
+  Option      "TearFree" "true"
+EndSection
+EOF
 
 echo_sleep "Disable pc speaker..."
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
@@ -98,7 +107,21 @@ sed -i '/session    include      system-local-login/a session    optional     pa
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
 chown $NEWUSER:wheel /mnt/PODACI
-cat fstab >> /etc/fstab
+cat >> /etc/fstab << EOF
+LABEL=PODACI                                /mnt/PODACI ext4        noatime,x-gvfs-show 0 0
+EOF
+
+echo_sleep "Set zsh as user shell..."
+chsh -s /usr/bin/zsh $NEWUSER
+
+echo_sleep "Fetch configs for user..."
+cd "/home/$NEWUSER"
+sudo -u $NEWUSER git init
+sudo -u $NEWUSER git remote add origin https://github.com/wooque/configs
+sudo -u $NEWUSER git fetch --all
+sudo -u $NEWUSER git reset --hard origin/master
+sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
+sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
 
 chown -R $NEWUSER:wheel /opt/arch_install
 cd /opt/arch_install
@@ -120,14 +143,3 @@ echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
 rm -rf "/home/$NEWUSER/.cache/yay/*"
 
-echo_sleep "Set zsh as user shell..."
-chsh -s /usr/bin/zsh $NEWUSER
-
-echo_sleep "Fetch configs for user..."
-cd "/home/$NEWUSER"
-sudo -u $NEWUSER git init
-sudo -u $NEWUSER git remote add origin https://github.com/wooque/configs
-sudo -u $NEWUSER git fetch --all
-sudo -u $NEWUSER git reset --hard origin/master
-sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
-sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
