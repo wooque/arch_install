@@ -46,6 +46,7 @@ grub-install $DISK
 
 echo_sleep "Create grub.cfg..."
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
+sed -i 's/quiet/quiet loglevel=3 udev.log_priority=3 vt.global_cursor_default=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Install packages..."
@@ -99,15 +100,19 @@ sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 echo_sleep "Disable coredump..."
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
 
-echo "Setup gnome-keyring unlock on login..."
-sed -i '/auth       include      system-local-login/a auth       optional     pam_gnome_keyring.so' /etc/pam.d/login
-sed -i '/session    include      system-local-login/a session    optional     pam_gnome_keyring.so auto_start' /etc/pam.d/login
-
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
 chown $NEWUSER:wheel /mnt/PODACI
 cat >> /etc/fstab << EOF
 LABEL=PODACI                                /mnt/PODACI ext4        noatime,x-gvfs-show 0 0
+EOF
+
+echo_sleep "Setup autologin..."
+cat >> /etc/systemd/system/getty@tty1.service.d/override.conf << EOF
+[Service]
+Type=simple
+ExecStart=
+ExecStart=-/usr/bin/agetty --skip-login --nonewline --noissue --autologin $NEWUSER --noclear %I \$TERM
 EOF
 
 echo_sleep "Set zsh as user shell..."
