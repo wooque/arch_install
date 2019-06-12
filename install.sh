@@ -108,6 +108,7 @@ LABEL=PODACI                                /mnt/PODACI ext4        noatime,x-gv
 EOF
 
 echo_sleep "Setup autologin..."
+mkdir  /etc/systemd/system/getty@tty1.service.d
 cat >> /etc/systemd/system/getty@tty1.service.d/override.conf << EOF
 [Service]
 Type=simple
