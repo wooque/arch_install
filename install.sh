@@ -119,14 +119,14 @@ EOF
 echo_sleep "Set zsh as user shell..."
 chsh -s /usr/bin/zsh $NEWUSER
 
-echo_sleep "Fetch configs for user..."
+echo_sleep "Fetch dotfiles..."
 cd "/home/$NEWUSER"
 sudo -u $NEWUSER git init
-sudo -u $NEWUSER git remote add origin https://github.com/wooque/configs
+sudo -u $NEWUSER git remote add origin https://github.com/wooque/dotfiles
 sudo -u $NEWUSER git fetch --all
 sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git branch --set-upstream-to=origin/master master
-sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/configs.git
+sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/dotfiles.git
 
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
