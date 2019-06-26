@@ -52,6 +52,7 @@ pulseaudio-alsa
 pulseaudio-equalizer-ladspa
 pulsemixer
 python-pylint
+qemu
 qrencode
 ranger
 redshift
