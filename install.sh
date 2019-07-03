@@ -134,6 +134,7 @@ cd /tmp/aur
 
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
+sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
 wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" -O PKGBUILD
 sudo -u $NEWUSER sh -c "yes | makepkg -si"
 
