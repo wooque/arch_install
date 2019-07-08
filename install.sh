@@ -46,7 +46,7 @@ grub-install $DISK
 
 echo_sleep "Create grub.cfg..."
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
-sed -i 's/quiet/quiet loglevel=3 udev.log_priority=3 vt.global_cursor_default=0/' /etc/default/grub
+sed -i 's/quiet/quiet udev.log_priority=3 vt.global_cursor_default=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Install packages..."
