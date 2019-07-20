@@ -49,10 +49,6 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 sed -i 's/quiet/quiet udev.log_priority=3 vt.global_cursor_default=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo_sleep "Add maximbaz repo..."
-echo -e "[maximbaz]\nServer = https://pkgbuild.com/~maximbaz/repo/" >> /etc/pacman.conf
-pacman -Syy
-
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
 usermod -aG adbusers,docker $NEWUSER
