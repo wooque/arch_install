@@ -17,7 +17,7 @@ echo_sleep "Mount $PART..."
 mount $PART /mnt
 
 echo_sleep "Pacstrap..."
-pacstrap /mnt base linux base-devel
+pacstrap /mnt base linux base-devel linux-firmware man-db
 
 echo_sleep "Gen fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
