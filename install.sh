@@ -64,8 +64,8 @@ ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service /etc/systemd/s
 
 echo_sleep "Setup cron..."
 cat >> "/var/spool/cron/$NEWUSER" << EOF
-0   22  *   *   *   "\$HOME/.scripts/backup" &> "\$HOME/backup.log"
-0   22  *   *   *   cu="\$(checkupdates)"; if [[ -n "\$cu" ]]; then echo "\$cu" > "\$HOME/updates.log"; fi
+0   11,17,23  *   *   *   "\$HOME/.scripts/backup"
+0   23  *   *   *   cu="\$(checkupdates)"; if [[ -n "\$cu" ]]; then echo "\$cu" > "\$HOME/updates.log"; fi
 EOF
 ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
 
