@@ -17,7 +17,6 @@ faad2
 feh
 gimp
 git
-gnome-keyring
 go
 gvim
 highlight
@@ -40,6 +39,7 @@ networkmanager
 nodejs
 noto-fonts-emoji
 npm
+openssh
 p7zip
 pacman-contrib
 postgresql
