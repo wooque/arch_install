@@ -53,9 +53,6 @@ echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
 usermod -aG adbusers,docker $NEWUSER
 
-echo_sleep "Remove gsfonts..."
-pacman --noconfirm -Rdd gsfonts
-
 echo_sleep "Setup networkmanager..."
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
 ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
