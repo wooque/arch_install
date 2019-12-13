@@ -1,4 +1,5 @@
 android-udev
+arandr
 arc-gtk-theme
 bind-tools
 cloc
@@ -6,10 +7,8 @@ cmus
 code
 crda
 cronie
-dialog
 docker
 docker-compose
-dosfstools
 drawing
 dunst
 eslint
@@ -50,10 +49,10 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-equalizer-ladspa
 pulsemixer
-python-pylint
 qemu
 qrencode
 ranger
+redis
 redshift
 rofi
 rsync
