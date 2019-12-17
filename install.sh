@@ -51,7 +51,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
-usermod -aG adbusers,docker $NEWUSER
+usermod -aG docker $NEWUSER
 
 echo_sleep "Setup networkmanager..."
 ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
@@ -132,12 +132,10 @@ cd /tmp/aur
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
-wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin" -O PKGBUILD
+curl "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin" -o PKGBUILD
 sudo -u $NEWUSER sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
-# Dropbox public key
-sudo -u $NEWUSER sh -c "gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E"
 sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides $(cat /root/arch_install/packages_aur | tr '\n' ' ')"
 
 rm -rf /root/arch_install
