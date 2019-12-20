@@ -65,7 +65,6 @@ xorg-server
 xorg-xbacklight
 xorg-xinit
 xorg-xinput
-xorg-xrdb
 xss-lock
 youtube-dl
 zathura
