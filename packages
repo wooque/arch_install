@@ -9,7 +9,6 @@ docker-compose
 drawing
 eslint
 expac
-faad2
 fasd
 git
 gvim
@@ -56,7 +55,6 @@ transmission-gtk
 ttf-droid
 ttf-liberation
 udevil
-unrar
 unzip
 upower
 w3m
