@@ -79,6 +79,11 @@ ln -sf /usr/lib/systemd/system/tlp.service /etc/systemd/system/multi-user.target
 mkdir /etc/systemd/system/sleep.target.wants
 ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.target.wants/tlp-sleep.service
 
+echo_sleep "Setup bluetooth..."
+ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
+ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+sed -i 's/#AutoEnable=false/AutoEnable=true/' /etc/bluetooth/main.conf
+
 echo_sleep "Fix screen tearing..."
 cat >> /etc/X11/xorg.conf.d/20-intel.conf << EOF
 Section "Device"

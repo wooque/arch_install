@@ -1,4 +1,5 @@
 arc-gtk-theme
+bluez-utils
 cloc
 cmus
 code
@@ -37,6 +38,7 @@ postgresql
 powertop
 pulseaudio
 pulseaudio-alsa
+pulseaudio-bluetooth
 pulsemixer
 qemu
 qrencode
