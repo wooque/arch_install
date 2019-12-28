@@ -81,6 +81,7 @@ ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.targe
 
 echo_sleep "Setup bluetooth..."
 ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
+mkdir /etc/systemd/system/bluetooth.target.wants
 ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
 sed -i 's/#AutoEnable=false/AutoEnable=true/' /etc/bluetooth/main.conf
 
