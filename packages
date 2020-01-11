@@ -1,4 +1,5 @@
 arc-gtk-theme
+aws-cli
 bluez-utils
 cloc
 cmus
@@ -19,6 +20,7 @@ i3status
 i3-wm
 imagemagick
 intel-ucode
+jdk11-openjdk
 libmad
 libmp4v2
 libreoffice-fresh
@@ -51,6 +53,7 @@ rxvt-unicode
 samba
 scrot
 sxiv
+terraform
 tk
 tlp
 transmission-gtk
@@ -68,6 +71,7 @@ xorg-xbacklight
 xorg-xinit
 xorg-xinput
 xss-lock
+yarn
 youtube-dl
 zathura
 zathura-pdf-mupdf
