@@ -17,9 +17,7 @@ echo_sleep "Sync hardware clock..."
 hwclock --systohc
 
 echo_sleep "Setup network time sync..."
-mkdir /etc/systemd/system/sysinit.target.wants
-ln -sf /usr/lib/systemd/system/systemd-timesyncd.service /etc/systemd/system/dbus-org.freedesktop.timesync1.service
-ln -sf /usr/lib/systemd/system/systemd-timesyncd.service /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service
+systemctl enable systemd-timesyncd.service
 
 echo_sleep "Generate locale..."
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
@@ -54,35 +52,27 @@ pacman --noconfirm -S $(cat /root/arch_install/packages)
 usermod -aG docker $NEWUSER
 
 echo_sleep "Setup networkmanager..."
-ln -sf /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/multi-user.target.wants/NetworkManager.service
-ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
-mkdir /etc/systemd/system/network-online.target.wants
-ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
+systemctl enable NetworkManager.service
 
 echo_sleep "Setup cron..."
 cat >> "/var/spool/cron/$NEWUSER" << EOF
 0   11,17,23  *   *   *   "\$HOME/.scripts/backup"
 0   23  *   *   *   cu="\$(checkupdates)"; if [[ -n "\$cu" ]]; then echo "\$cu" > "\$HOME/updates.log"; fi
 EOF
-ln -sf /usr/lib/systemd/system/cronie.service /etc/systemd/system/multi-user.target.wants/cronie.service
+systemctl enable cronie.service
 
 echo_sleep "Setup devmon..."
 sed -i 's/ARGS=""/ARGS="-s"/' /etc/conf.d/devmon
-ln -sf /usr/lib/systemd/system/devmon@.service "/etc/systemd/system/multi-user.target.wants/devmon@$NEWUSER.service"
+systemctl enable "devmon@$NEWUSER.service"
 
 echo_sleep "Setup fstrim..."
-mkdir /etc/systemd/system/timers.target.wants
-ln -sf /usr/lib/systemd/system/fstrim.timer /etc/systemd/system/timers.target.wants/fstrim.timer
+systemctl enable fstrim.timer
 
 echo_sleep "Setup tlp..."
-ln -sf /usr/lib/systemd/system/tlp.service /etc/systemd/system/multi-user.target.wants/tlp.service
-mkdir /etc/systemd/system/sleep.target.wants
-ln -sf /usr/lib/systemd/system/tlp-sleep.service /etc/systemd/system/sleep.target.wants/tlp-sleep.service
+systemctl enable tlp.service
 
 echo_sleep "Setup bluetooth..."
-ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
-mkdir /etc/systemd/system/bluetooth.target.wants
-ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+systemctl enable bluetooth.service
 sed -i 's/#AutoEnable=false/AutoEnable=true/' /etc/bluetooth/main.conf
 
 echo_sleep "Fix screen tearing..."
