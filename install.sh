@@ -93,6 +93,10 @@ sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 echo_sleep "Disable coredump..."
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
 
+echo_sleep "Disable systemd-homed/userdbd..."
+systemctl mask systemd-homed.service
+systemctl mask systemd-userdbd.socket
+
 echo_sleep "Setup data partition..."
 mkdir /mnt/PODACI
 chown $NEWUSER:wheel /mnt/PODACI
