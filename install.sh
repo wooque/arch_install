@@ -29,6 +29,12 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo_sleep "Set hostname..."
 echo $HOSTNAME > /etc/hostname
 
+echo_sleep "Set hosts..."
+cat >> /etc/hosts << EOF
+127.0.0.1	localhost
+::1		    localhost
+EOF
+
 echo "Enter password for root"
 passwd
 
