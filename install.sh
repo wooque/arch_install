@@ -57,6 +57,7 @@ echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
 
 echo_sleep "Setup iwd..."
+mkdir /etc/iwd
 cat >> /etc/iwd/main.conf << EOF
 [General]
 EnableNetworkConfiguration=true
