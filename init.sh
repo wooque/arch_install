@@ -11,7 +11,7 @@ echo_sleep "Set ntp..."
 timedatectl set-ntp true
 
 echo_sleep "Format $PART..."
-mkfs.ext4 $PART
+mkfs.ext4 -F $PART
 
 echo_sleep "Mount $PART..."
 mount $PART /mnt
