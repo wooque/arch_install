@@ -45,7 +45,7 @@ echo "Enter password for $NEWUSER"
 passwd $NEWUSER
 
 echo_sleep "Install grub..."
-pacman -S --noconfirm grub os-prober
+pacman -S --noconfirm grub
 grub-install $DISK
 
 echo_sleep "Create grub.cfg..."
