@@ -7,6 +7,8 @@ cmus
 code
 crda
 cronie
+docker
+docker-compose
 eslint
 expac
 fasd
@@ -35,7 +37,6 @@ openresolv
 openssh
 p7zip
 pacman-contrib
-podman
 postgresql
 powertop
 pulseaudio

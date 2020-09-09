@@ -55,6 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
+usermod -aG docker $NEWUSER
 
 echo_sleep "Setup iwd..."
 mkdir /etc/iwd
