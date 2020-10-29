@@ -1,5 +1,4 @@
 arc-gtk-theme
-aws-cli
 bluez-utils
 chromium
 cloc
@@ -37,7 +36,6 @@ openresolv
 openssh
 p7zip
 pacman-contrib
-postgresql
 powertop
 pulseaudio
 pulseaudio-alsa
@@ -46,7 +44,6 @@ pulsemixer
 qemu
 qrencode
 ranger
-redis
 redshift
 rofi
 rsync
@@ -54,7 +51,6 @@ rxvt-unicode
 samba
 scrot
 sxiv
-terraform
 tk
 tlp
 transmission-gtk
@@ -73,8 +69,6 @@ xorg-xbacklight
 xorg-xinit
 xorg-xinput
 xss-lock
-yarn
-youtube-dl
 zathura
 zathura-pdf-mupdf
 zip
