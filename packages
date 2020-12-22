@@ -20,7 +20,6 @@ i3status
 i3-wm
 imagemagick
 intel-ucode
-iwd
 libmad
 libmp4v2
 libreoffice-fresh
@@ -29,10 +28,10 @@ man-db
 meld
 mpv
 ncdu
+networkmanager
 nodejs
 noto-fonts-emoji
 npm
-openresolv
 openssh
 p7zip
 pacman-contrib

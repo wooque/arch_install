@@ -57,15 +57,8 @@ echo_sleep "Install packages..."
 pacman --noconfirm -S $(cat /root/arch_install/packages)
 usermod -aG docker $NEWUSER
 
-echo_sleep "Setup iwd..."
-mkdir /etc/iwd
-cat >> /etc/iwd/main.conf << EOF
-[General]
-EnableNetworkConfiguration=true
-[Network]
-NameResolvingService=resolvconf
-EOF
-systemctl enable iwd.service
+echo_sleep "Setup networkmanager..."
+systemctl enable NetworkManager.service
 
 echo_sleep "Setup cron..."
 cat >> "/var/spool/cron/$NEWUSER" << EOF
