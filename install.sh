@@ -157,11 +157,9 @@ done
 echo_sleep "Fetch dotfiles..."
 cd "/home/$NEWUSER"
 sudo -u $NEWUSER git init
-sudo -u $NEWUSER git checkout -b gnome
 sudo -u $NEWUSER git remote add origin https://github.com/wooque/dotfiles
-sudo -u $NEWUSER git fetch --all
-sudo -u $NEWUSER git reset --hard origin/gnome
-sudo -u $NEWUSER git branch --set-upstream-to=origin/gnome gnome
+sudo -u $NEWUSER git fetch --set-upstream origin master
+sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/dotfiles.git
 
 mkdir /tmp/aur
