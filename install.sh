@@ -16,7 +16,7 @@ PACKAGES_UTILS="z htop ncdu rsync p7zip bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code meld tk"
 PACKAGES_VM="qemu samba"
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer"
-CRON="0 11,17,23 * * * '\$HOME/.scripts/backup'"
+CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
 FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
 AUR="dropbox viber postman-bin tableplus"
 
