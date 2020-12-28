@@ -73,6 +73,9 @@ pacman --noconfirm -S $PACKAGES_DEV
 echo_sleep "Install virtual machine packages..."
 pacman --noconfirm -S $PACKAGES_VM
 
+echo_sleep "Remove problematic font (gsfonts)..."
+pacman --noconfirm -Rdd gsfonts
+
 echo_sleep "Setup user groups..."
 usermod -aG "$NEWUSER_GROUPS" "$NEWUSER"
 
