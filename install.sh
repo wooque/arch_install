@@ -11,7 +11,7 @@ PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
 PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 PACKAGES_FONTS="ttf-liberation ttf-dejavu ttf-droid noto-fonts-emoji"
-PACKAGES_APPS="firefox-developer-edition chromium gedit gnome-calculator gnome-screenshot file-roller eog evince vlc transmission-gtk gimp libreoffice-fresh"
+PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince vlc transmission-gtk gimp libreoffice-fresh"
 PACKAGES_UTILS="z htop ncdu rsync p7zip bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code meld tk"
 PACKAGES_VM="qemu samba"
@@ -72,9 +72,6 @@ pacman --noconfirm -S $PACKAGES_DEV
 
 echo_sleep "Install virtual machine packages..."
 pacman --noconfirm -S $PACKAGES_VM
-
-echo_sleep "Remove problematic font (gsfonts)..."
-pacman --noconfirm -Rdd gsfonts
 
 echo_sleep "Setup user groups..."
 usermod -aG "$NEWUSER_GROUPS" "$NEWUSER"
