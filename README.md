@@ -4,10 +4,11 @@ Partion disk:
 
 Usefull commans: `n` new partition, `a` set bootable flag, `w` write changes to disk
 
-Bootstrap inital env with:
+Bootstrap inital env (`/dev/sda1` is default):
 
-`./bootstrap.sh`
+`./bootstrap.sh [/dev/sda1]`
 
 When in chroot run full install:
 
 `/root/install.sh`
+

@@ -11,9 +11,9 @@ PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
 PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 PACKAGES_FONTS="ttf-liberation ttf-dejavu ttf-droid noto-fonts-emoji"
-PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince mpv transmission-gtk gimp libreoffice-fresh"
+PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince mpv transmission-gtk gimp libreoffice-fresh meld"
 PACKAGES_UTILS="z htop ncdu rsync p7zip bluez-utils"
-PACKAGES_DEV="docker-compose nodejs npm code meld tk"
+PACKAGES_DEV="docker-compose nodejs npm code tk"
 PACKAGES_VM="qemu samba"
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer"
 CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
@@ -179,3 +179,4 @@ rm -rf /root/install.sh
 echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
 rm -rf "/home/$NEWUSER/.cache/yay"
+
