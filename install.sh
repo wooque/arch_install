@@ -15,10 +15,10 @@ PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog 
 PACKAGES_UTILS="z htop ncdu rsync p7zip bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
 PACKAGES_VM="qemu samba"
+PACKAGES_AUR="dropbox viber postman-bin tableplus"
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer"
 CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
 FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
-AUR="dropbox viber postman-bin tableplus"
 
 echo_sleep "Setup time..."
 ln -sf "$TIMEZONE" /etc/localtime
@@ -172,7 +172,7 @@ curl "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin" -o PKGBUI
 sudo -u $NEWUSER sh -c "yes | makepkg -si"
 
 echo_sleep "Install AUR packages..."
-sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides $AUR"
+sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides $PACKAGES_AUR"
 
 rm -rf /root/install.sh
 
