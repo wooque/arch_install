@@ -1,6 +1,7 @@
 #!/bin/bash
 echo_sleep () { echo "$1"; sleep 1; }
 
+DE=${1:-"plasma"}
 BOOT_DISK="/dev/sda"
 NEWUSER="vuk"
 NEWUSER_GROUPS="docker"
@@ -9,14 +10,27 @@ HOSTNAME="battlestation"
 LOCALE="en_US.UTF-8"
 PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
+if [[ "$DE" = "plasma" ]]; then
+PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa powerdevil bluedevil khotkeys konsole dolphin plasma-workspace-wallpapers kde-gtk-config"
+elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
+fi
 PACKAGES_FONTS="ttf-liberation ttf-dejavu ttf-droid noto-fonts-emoji"
+if [[ "$DE" = "plasma" ]]; then
+PACKAGES_APPS="chromium kwrite kcalc spectacle ark gwenview okular mpv transmission-qt krita libreoffice-fresh kdiff3"
+elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince mpv transmission-gtk gimp libreoffice-fresh meld"
-PACKAGES_UTILS="z htop ncdu rsync p7zip bluez-utils"
+fi
+PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
 PACKAGES_VM="qemu samba"
 PACKAGES_AUR="dropbox viber postman-bin tableplus"
-SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer"
+SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer"
+if [[ "$DE" = "plasma" ]]; then
+SERVICES="sddm $SERVICES"
+elif [[ "$DE" = "gnome" ]]; then
+SERVICES="gdm $SERVICES"
+fi
 CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
 FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
 
