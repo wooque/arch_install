@@ -11,7 +11,7 @@ LOCALE="en_US.UTF-8"
 PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
 if [[ "$DE" = "plasma" ]]; then
-PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter konsole dolphin plasma-workspace-wallpapers kde-gtk-config"
+PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter konsole dolphin plasma-workspace-wallpapers kde-gtk-config imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 fi
