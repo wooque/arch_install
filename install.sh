@@ -33,6 +33,7 @@ SERVICES="gdm $SERVICES"
 fi
 CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
 FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
+DOTFILES_GITHUB="wooque/dotfiles"
 
 echo_sleep "Setup time..."
 ln -sf "$TIMEZONE" /etc/localtime
@@ -171,10 +172,10 @@ done
 echo_sleep "Fetch dotfiles..."
 cd "/home/$NEWUSER"
 sudo -u $NEWUSER git init
-sudo -u $NEWUSER git remote add origin https://github.com/wooque/dotfiles
+sudo -u $NEWUSER git remote add origin "https://github.com/$DOTFILES_GITHUB"
 sudo -u $NEWUSER git fetch --set-upstream origin master
 sudo -u $NEWUSER git reset --hard origin/master
-sudo -u $NEWUSER git remote set-url origin git@github.com:wooque/dotfiles.git
+sudo -u $NEWUSER git remote set-url origin "git@github.com:$DOTFILES_GITHUB.git"
 
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
