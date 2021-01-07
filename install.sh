@@ -1,7 +1,7 @@
 #!/bin/bash
 echo_sleep () { echo "$1"; sleep 1; }
 
-DE=${1:-"plasma"}
+DE=${1:-"gnome"}
 BOOT_DISK="/dev/sda"
 NEWUSER="vuk"
 NEWUSER_GROUPS="docker"
