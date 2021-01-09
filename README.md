@@ -8,6 +8,6 @@ Bootstrap inital env (`/dev/sda1` is default):
 
 `./bootstrap.sh [/dev/sda1]`
 
-When in chroot run full install (`plasma` is default):
+When in chroot run full install (`gnome` is default):
 
-`/root/install.sh [plasma|gnome]`
+`/root/install.sh [gnome|plasma]`
