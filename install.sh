@@ -17,9 +17,9 @@ PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds 
 fi
 PACKAGES_FONTS="ttf-liberation ttf-dejavu ttf-droid noto-fonts-emoji"
 if [[ "$DE" = "plasma" ]]; then
-PACKAGES_APPS="chromium kwrite kcalc spectacle ark gwenview okular mpv transmission-qt krita libreoffice-fresh kdiff3"
+PACKAGES_APPS="chromium kwrite kcalc spectacle ark gwenview okular juk mpv transmission-qt krita libreoffice-fresh kdiff3"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince mpv transmission-gtk gimp libreoffice-fresh meld"
+PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince rhythmbox mpv transmission-gtk gimp libreoffice-fresh meld"
 fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
