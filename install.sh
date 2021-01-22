@@ -11,15 +11,18 @@ LOCALE="en_US.UTF-8"
 PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
 if [[ "$DE" = "plasma" ]]; then
-PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter konsole dolphin plasma-workspace-wallpapers kde-gtk-config imagemagick"
+# noto-fonts-cjk for chinese/japanese characters, gnome is able to use ttf-droid
+# install imagemagick explicitly, gnome is pulling it as dep
+PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter konsole dolphin plasma-workspace-wallpapers kde-gtk-config noto-fonts-cjk imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_DE="gdm gnome-control-center gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 fi
 PACKAGES_FONTS="ttf-liberation ttf-dejavu ttf-droid noto-fonts-emoji"
+PACKAGES_APPS="chromium mpv gimp libreoffice"
 if [[ "$DE" = "plasma" ]]; then
-PACKAGES_APPS="chromium kwrite kcalc spectacle ark gwenview okular juk mpv transmission-qt krita libreoffice-fresh kdiff3"
+PACKAGES_APPS="kwrite kcalc spectacle ark gwenview okular juk transmission-qt kdiff3 $PACKAGES_APPS"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_APPS="chromium gedit gnome-calculator gnome-screenshot file-roller eog evince rhythmbox mpv transmission-gtk gimp libreoffice-fresh meld"
+PACKAGES_APPS="gedit gnome-calculator gnome-screenshot file-roller eog evince rhythmbox transmission-gtk meld $PACKAGES_APPS"
 fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
