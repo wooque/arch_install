@@ -34,7 +34,7 @@ SERVICES="sddm $SERVICES"
 elif [[ "$DE" = "gnome" ]]; then
 SERVICES="gdm $SERVICES"
 fi
-CRON="0 11,17,23 * * * \$HOME/.scripts/backup"
+CRON="0 11,17,23 * * * bash -ic backup"
 FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
 DOTFILES_GITHUB="wooque/dotfiles"
 
