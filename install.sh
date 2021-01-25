@@ -27,7 +27,7 @@ fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
 PACKAGES_VM="qemu samba"
-PACKAGES_AUR="dropbox viber postman-bin tableplus"
+PACKAGES_AUR="dropbox viber insomnia-bin tableplus"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 if [[ "$DE" = "plasma" ]]; then
 SERVICES="sddm $SERVICES"
