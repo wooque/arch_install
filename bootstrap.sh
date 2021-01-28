@@ -24,5 +24,7 @@ echo_sleep "Copy install script to /root..."
 cp install.sh "$MOUNT/root"
 
 echo_sleep "Chroot..."
-arch-chroot "$MOUNT"
+arch-chroot "$MOUNT" /root/install.sh
 
+echo_sleep "Reboot..."
+reboot

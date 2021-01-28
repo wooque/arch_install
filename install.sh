@@ -198,3 +198,5 @@ echo_sleep "Clean pacman/yay cache..."
 rm -rf /var/cache/pacman/pkg/*
 rm -rf "/home/$NEWUSER/.cache/yay"
 
+exit
+
