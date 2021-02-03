@@ -129,10 +129,11 @@ EOF
 
 echo_sleep "Setup mounts..."
 for f in "${FSTAB[@]}"; do
-dir=$(echo "$f" | cut -d ' ' -f2)
-mkdir "$dir"
-chown $NEWUSER:wheel "$dir"
-echo "$f" >> /etc/fstab
+  dir=$(echo "$f" | cut -d ' ' -f2)
+  [[ -n "$dir" ]] && continue
+  mkdir "$dir"
+  chown $NEWUSER:wheel "$dir"
+  echo "$f" >> /etc/fstab
 done
 
 echo_sleep "Fetch dotfiles..."
