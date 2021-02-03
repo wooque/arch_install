@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./config.sh
+. /root/config.sh
 
 echo_sleep "Setup time..."
 ln -sf "$TIMEZONE" /etc/localtime

@@ -23,5 +23,8 @@ cp config.sh install.sh "$MOUNT/root"
 echo_sleep "Chroot and install..."
 arch-chroot "$MOUNT" /root/install.sh
 
+echo_sleep "Unmount $INSTALL_PART..."
+umount "$MOUNT"
+
 echo_sleep "Reboot..."
 reboot
