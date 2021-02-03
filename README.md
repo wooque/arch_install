@@ -1,13 +1,7 @@
-Partion disk:
+Partion disk with `fdisk /dev/sda`.
 
-`fdisk /dev/sda`
+Usefull commans: `n` new partition, `a` set bootable flag, `w` write changes to disk.
 
-Usefull commans: `n` new partition, `a` set bootable flag, `w` write changes to disk
+Edit `config.sh` to change installation variables.
 
-Bootstrap inital env (`/dev/sda1` is default):
-
-`./bootstrap.sh [/dev/sda1]`
-
-When in chroot run full install (`gnome` is default):
-
-`/root/install.sh [gnome|plasma]`
+Run `./install.sh` to do installation.
