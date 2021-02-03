@@ -9,7 +9,7 @@ TIMEZONE="/usr/share/zoneinfo/Europe/Belgrade"
 HOSTNAME="battlestation"
 LOCALE="en_US.UTF-8"
 PACKAGES_BOOT="grub intel-ucode"
-PACKAGES_BASE="nano man-db bash-completion cronie tlp networkmanager libva-intel-driver git"
+PACKAGES_BASE="nano man-db bash-completion cronie tlp crda networkmanager libva-intel-driver git"
 if [[ "$DE" = "plasma" ]]; then
 # noto-fonts-cjk for chinese/japanese characters, gnome is able to use ttf-droid
 # install imagemagick explicitly, gnome is pulling it as dep
