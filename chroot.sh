@@ -155,7 +155,7 @@ sudo -u $NEWUSER makepkg -s
 pacman --noconfirm -U "$(ls yay-bin*)"
 
 echo_sleep "Install AUR packages..."
-sudo -u $NEWUSER sh -c "echo -e 'yes\nyes\n$PASS' | yay -S --nodiffmenu --nocleanmenu --noprovides --removemake --sudoflags '-S' $PACKAGES_AUR"
+sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides --removemake $PACKAGES_AUR"
 
 rm -f /root/config.sh /root/chroot.sh
 
