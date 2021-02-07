@@ -8,6 +8,7 @@ echo_sleep "Format $INSTALL_PART..."
 mkfs.ext4 -F "$INSTALL_PART"
 
 echo_sleep "Mount $INSTALL_PART..."
+mkdir -p "$MOUNT"
 mount "$INSTALL_PART" "$MOUNT"
 
 echo_sleep "Pacstrap..."
@@ -25,6 +26,3 @@ arch-chroot "$MOUNT" /root/chroot.sh
 
 echo_sleep "Unmount $INSTALL_PART..."
 umount "$MOUNT"
-
-echo_sleep "Reboot..."
-reboot
