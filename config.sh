@@ -13,7 +13,7 @@ PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp crda libva-intel-driver git"
 if [[ "$DE" = "plasma" ]]; then
 # install imagemagick explicitly, gnome is pulling it as dep
-PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers imagemagick"
+PACKAGES_DE="sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 fi
@@ -38,7 +38,7 @@ elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_APPS="gedit gnome-calculator gnome-screenshot file-roller eog evince rhythmbox transmission-gtk meld $PACKAGES_APPS"
 fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
-PACKAGES_DEV="docker-compose nodejs npm code tk"
+PACKAGES_DEV="docker-compose npm code tk"
 PACKAGES_VM="qemu samba"
 PACKAGES_AUR="dropbox viber insomnia-bin tableplus asdf-vm"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
