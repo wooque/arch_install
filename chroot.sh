@@ -36,11 +36,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo_sleep "Install base packages..."
 pacman --noconfirm -S $PACKAGES_BASE
 
-echo_sleep "Install desktop environment..."
-pacman --noconfirm -S $PACKAGES_DE
-
 echo_sleep "Install fonts..."
 pacman --noconfirm -S $PACKAGES_FONTS
+
+echo_sleep "Install desktop environment..."
+pacman --noconfirm -S $PACKAGES_DE
 
 echo_sleep "Install apps..."
 pacman --noconfirm -S $PACKAGES_APPS
@@ -130,7 +130,7 @@ EOF
 echo_sleep "Setup mounts..."
 for f in "${FSTAB[@]}"; do
   dir=$(echo "$f" | cut -d ' ' -f2)
-  [[ -n "$dir" ]] && continue
+  [[ -z "$dir" ]] && continue
   mkdir "$dir"
   chown $NEWUSER:wheel "$dir"
   echo "$f" >> /etc/fstab
