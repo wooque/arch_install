@@ -15,9 +15,9 @@ if [[ "$DE" = "plasma" ]]; then
 # install imagemagick explicitly, gnome is pulling it as dep
 PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers noto-fonts-cjk imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell ttf-droid"
+PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell ttf-dejavu ttf-droid"
 fi
-PACKAGES_FONTS="ttf-liberation ttf-dejavu noto-fonts-emoji"
+PACKAGES_FONTS="noto-fonts-emoji"
 PACKAGES_APPS="chromium mpv gimp libreoffice"
 if [[ "$DE" = "plasma" ]]; then
 PACKAGES_APPS="kwrite kcalc spectacle ark gwenview okular juk transmission-qt kdiff3 $PACKAGES_APPS"
@@ -27,7 +27,7 @@ fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose nodejs npm code tk"
 PACKAGES_VM="qemu samba"
-PACKAGES_AUR="dropbox viber insomnia-bin tableplus"
+PACKAGES_AUR="dropbox viber insomnia-bin tableplus asdf-vm"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 if [[ "$DE" = "plasma" ]]; then
 SERVICES="sddm $SERVICES"
