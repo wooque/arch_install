@@ -18,7 +18,7 @@ elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell ttf-dejavu ttf-droid"
 fi
 PACKAGES_FONTS="noto-fonts-emoji"
-PACKAGES_APPS="chromium mpv gimp libreoffice"
+PACKAGES_APPS="chromium mpv gimp libreoffice-fresh"
 if [[ "$DE" = "plasma" ]]; then
 PACKAGES_APPS="kwrite kcalc spectacle ark gwenview okular juk transmission-qt kdiff3 $PACKAGES_APPS"
 elif [[ "$DE" = "gnome" ]]; then
