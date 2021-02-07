@@ -3,6 +3,7 @@ INSTALL_PART="/dev/sda1"
 MOUNT=/mnt
 BOOT_DISK="/dev/sda"
 NEWUSER="vuk"
+PASS="pass"
 NEWUSER_GROUPS="docker"
 TIMEZONE="/usr/share/zoneinfo/Europe/Belgrade"
 HOSTNAME="battlestation"
@@ -11,13 +12,25 @@ DE="plasma"
 PACKAGES_BOOT="grub intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp crda libva-intel-driver git"
 if [[ "$DE" = "plasma" ]]; then
-# noto-fonts-cjk for chinese/japanese characters, gnome is able to use ttf-droid
 # install imagemagick explicitly, gnome is pulling it as dep
-PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers noto-fonts-cjk imagemagick"
+PACKAGES_DE="sddm sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell ttf-dejavu ttf-droid"
+PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
 fi
 PACKAGES_FONTS="noto-fonts-emoji"
+if [[ "$DE" = "plasma" ]]; then
+# noto-fonts is dependency of plasma-desktop, but install it explicitly so it's used as ttf-font provider
+PACKAGES_FONTS="noto-fonts noto-fonts-cjk $PACKAGES_FONTS"
+FONT_SANS="Noto Sans"
+FONT_SERIF="Noto Serif"
+FONT_MONOSPACE="Hack"
+elif [[ "$DE" = "gnome" ]]; then
+PACKAGES_FONTS="ttf-dejavu ttf-droid $PACKAGES_FONTS"
+# ttf-liberation is pulled as dependency of chromium
+FONT_SANS="Liberation Sans"
+FONT_SERIF="Liberation Serif"
+FONT_MONOSPACE="Liberation Mono"
+fi
 PACKAGES_APPS="chromium mpv gimp libreoffice-fresh"
 if [[ "$DE" = "plasma" ]]; then
 PACKAGES_APPS="kwrite kcalc spectacle ark gwenview okular juk transmission-qt kdiff3 $PACKAGES_APPS"

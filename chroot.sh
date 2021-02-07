@@ -19,13 +19,13 @@ cat >> /etc/hosts << EOF
 EOF
 
 echo "Enter password for root"
-passwd
+echo -e "$PASS\n$PASS" | passwd
 
 echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 useradd -g wheel -m $NEWUSER
 echo "Enter password for $NEWUSER"
-passwd $NEWUSER
+echo -e "$PASS\n$PASS" | passwd $NEWUSER
 
 echo_sleep "Install bootloader..."
 pacman -S --noconfirm $PACKAGES_BOOT
@@ -110,19 +110,19 @@ cat >> /etc/fonts/local.conf << EOF
   </match>
   <alias>
     <family>serif</family>
-    <prefer><family>Liberation Serif</family></prefer>
+    <prefer><family>$FONT_SERIF</family></prefer>
   </alias>
   <alias>
     <family>sans-serif</family>
-    <prefer><family>Liberation Sans</family></prefer>
+    <prefer><family>$FONT_SANS</family></prefer>
   </alias>
   <alias>
     <family>sans</family>
-    <prefer><family>Liberation Sans</family></prefer>
+    <prefer><family>$FONT_SANS</family></prefer>
   </alias>
   <alias>
     <family>monospace</family>
-    <prefer><family>Liberation Mono</family></prefer>
+    <prefer><family>$FONT_MONOSPACE</family></prefer>
   </alias>
 </fontconfig>
 EOF
@@ -151,10 +151,11 @@ cd /tmp/aur
 echo_sleep "Install yay..."
 sed -i 's/#Color/Color/' /etc/pacman.conf
 curl "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin" -o PKGBUILD
-sudo -u $NEWUSER sh -c "yes | makepkg -si"
+sudo -u $NEWUSER makepkg -s
+pacman --noconfirm -U "$(ls yay-bin*)"
 
 echo_sleep "Install AUR packages..."
-sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides $PACKAGES_AUR"
+sudo -u $NEWUSER sh -c "echo -e 'yes\n$PASS' | yay -S --nodiffmenu --nocleanmenu --noprovides $PACKAGES_AUR"
 
 rm -f /root/config.sh /root/chroot.sh
 
