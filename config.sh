@@ -26,10 +26,9 @@ FONT_SERIF="Noto Serif"
 FONT_MONOSPACE="Hack"
 elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_FONTS="ttf-dejavu ttf-droid $PACKAGES_FONTS"
-# ttf-liberation is pulled as dependency of chromium
-FONT_SANS="Liberation Sans"
-FONT_SERIF="Liberation Serif"
-FONT_MONOSPACE="Liberation Mono"
+FONT_SANS="DejaVu Sans"
+FONT_SERIF="DejaVu Serif"
+FONT_MONOSPACE="DejaVu Sans Mono"
 fi
 PACKAGES_APPS="chromium mpv gimp libreoffice-fresh"
 if [[ "$DE" = "plasma" ]]; then
