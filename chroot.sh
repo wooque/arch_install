@@ -124,6 +124,12 @@ cat >> /etc/fonts/local.conf << EOF
     <family>monospace</family>
     <prefer><family>$FONT_MONOSPACE</family></prefer>
   </alias>
+  <alias binding="same">
+    <family>Helvetica</family>
+    <prefer>
+      <family>Liberation Sans</family>
+    </prefer>
+  </alias>
 </fontconfig>
 EOF
 
