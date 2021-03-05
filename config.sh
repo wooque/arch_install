@@ -15,7 +15,7 @@ if [[ "$DE" = "plasma" ]]; then
 # install imagemagick explicitly, gnome is pulling it as dep
 PACKAGES_DE="sddm-kcm plasma-desktop kscreen plasma-nm plasma-pa pulseaudio-bluetooth powerdevil bluedevil khotkeys kinfocenter kde-gtk-config konsole dolphin kdialog plasma-workspace-wallpapers imagemagick"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell"
+PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell gnome-shell-extension-appindicator"
 fi
 PACKAGES_FONTS="noto-fonts-emoji"
 if [[ "$DE" = "plasma" ]]; then
@@ -25,7 +25,7 @@ FONT_SANS="Noto Sans"
 FONT_SERIF="Noto Serif"
 FONT_MONOSPACE="Hack"
 elif [[ "$DE" = "gnome" ]]; then
-PACKAGES_FONTS="ttf-dejavu ttf-droid $PACKAGES_FONTS"
+PACKAGES_FONTS="ttf-ubuntu-font-family ttf-dejavu ttf-droid $PACKAGES_FONTS"
 FONT_SANS="Liberation Sans"
 FONT_SERIF="Liberation Serif"
 FONT_MONOSPACE="Liberation Mono"
@@ -37,9 +37,9 @@ elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_APPS="gedit gnome-calculator gnome-screenshot file-roller eog evince rhythmbox transmission-gtk meld $PACKAGES_APPS"
 fi
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
-PACKAGES_DEV="docker-compose npm code tk"
+PACKAGES_DEV="docker-compose code tk"
 PACKAGES_VM="qemu samba"
-PACKAGES_AUR="dropbox viber insomnia-bin tableplus asdf-vm"
+PACKAGES_AUR="gnome-shell-extension-dash-to-dock dropbox viber insomnia-bin tableplus asdf-vm"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 if [[ "$DE" = "plasma" ]]; then
 SERVICES="sddm $SERVICES"
