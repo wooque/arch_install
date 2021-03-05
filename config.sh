@@ -28,7 +28,7 @@ elif [[ "$DE" = "gnome" ]]; then
 PACKAGES_FONTS="ttf-ubuntu-font-family ttf-dejavu ttf-droid $PACKAGES_FONTS"
 FONT_SANS="Liberation Sans"
 FONT_SERIF="Liberation Serif"
-FONT_MONOSPACE="Liberation Mono"
+FONT_MONOSPACE="Ubuntu Mono"
 fi
 PACKAGES_APPS="chromium mpv gimp libreoffice-fresh"
 if [[ "$DE" = "plasma" ]]; then
