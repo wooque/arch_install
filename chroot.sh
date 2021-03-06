@@ -33,26 +33,8 @@ grub-install $BOOT_DISK
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo_sleep "Install base packages..."
-pacman --noconfirm -S $PACKAGES_BASE
-
-echo_sleep "Install fonts..."
-pacman --noconfirm -S $PACKAGES_FONTS
-
-echo_sleep "Install desktop environment..."
-pacman --noconfirm -S $PACKAGES_DE
-
-echo_sleep "Install apps..."
-pacman --noconfirm -S $PACKAGES_APPS
-
-echo_sleep "Install utils..."
-pacman --noconfirm -S $PACKAGES_UTILS
-
-echo_sleep "Install dev packages..."
-pacman --noconfirm -S $PACKAGES_DEV
-
-echo_sleep "Install virtual machine packages..."
-pacman --noconfirm -S $PACKAGES_VM
+echo_sleep "Install packages..."
+pacman --noconfirm -S $PACKAGES
 
 echo_sleep "Setup user groups..."
 usermod -aG "$NEWUSER_GROUPS" "$NEWUSER"
