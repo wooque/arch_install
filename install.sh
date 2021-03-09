@@ -19,7 +19,7 @@ genfstab -U "$MOUNT" >> "$MOUNT/etc/fstab"
 sed -i 's/relatime/noatime/' "$MOUNT/etc/fstab"
 
 echo_sleep "Copy install script to /root..."
-cp config.sh chroot.sh "$MOUNT/root"
+cp config.sh chroot.sh dconf.conf "$MOUNT/root"
 
 echo_sleep "Chroot and install..."
 arch-chroot "$MOUNT" /root/chroot.sh

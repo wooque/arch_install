@@ -132,6 +132,9 @@ sudo -u $NEWUSER git fetch --set-upstream origin master
 sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git remote set-url origin "git@github.com:$DOTFILES_GITHUB.git"
 
+echo_sleep "Load dconf..."
+sudo -u $NEWUSER dconf load / < /root/dconf.conf
+
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
 cd /tmp/aur
@@ -145,7 +148,7 @@ pacman --noconfirm -U "$(ls yay-bin*)"
 echo_sleep "Install AUR packages..."
 sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides --removemake $PACKAGES_AUR"
 
-rm -f /root/config.sh /root/chroot.sh
+rm -f /root/config.sh /root/chroot.sh /root/dconf.conf
 
 echo_sleep "Clean pacman/yay cache..."
 yes | yay -Scc
