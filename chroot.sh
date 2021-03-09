@@ -133,7 +133,7 @@ sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git remote set-url origin "git@github.com:$DOTFILES_GITHUB.git"
 
 echo_sleep "Load dconf..."
-sudo -u $NEWUSER dconf load / < /root/dconf.conf
+sudo -u $NEWUSER dbus-launch dconf load / < /root/dconf.conf
 
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
