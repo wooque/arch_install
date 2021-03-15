@@ -10,7 +10,7 @@ TIMEZONE="/usr/share/zoneinfo/Europe/Belgrade"
 HOSTNAME="battlestation"
 LOCALE="en_US.UTF-8"
 
-PACKAGES_BOOT="grub efibootmgr intel-ucode"
+PACKAGES_BOOT="intel-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp crda libva-intel-driver git"
 PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell gnome-shell-extension-appindicator"
 PACKAGES_FONTS="noto-fonts-emoji ttf-liberation ttf-ubuntu-font-family ttf-dejavu ttf-droid"

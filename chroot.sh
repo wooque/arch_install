@@ -29,11 +29,16 @@ echo -e "$PASS\n$PASS" | passwd $NEWUSER
 
 echo_sleep "Install bootloader..."
 pacman -S --noconfirm $PACKAGES_BOOT
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
-mkdir -p /boot/EFI/BOOT
-cp /boot/EFI/GRUB/grubx64.efi /boot/EFI/BOOT/BOOTX64.EFI
+bootctl install
+INSTALL_UUID=$(blkid -s UUID -o value "$INSTALL_PART")
+echo "timeout 0" >> /boot/loader/loader.conf
+cat >> /boot/loader/entries/arch.conf << EOF
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux.img
+options root="UUID=$INSTALL_UUID" rw loglevel=3 quiet
+EOF
 
 echo_sleep "Install packages..."
 pacman --noconfirm -S $PACKAGES
