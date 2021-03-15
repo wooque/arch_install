@@ -11,12 +11,16 @@ echo_sleep "Mount $INSTALL_PART..."
 mkdir -p "$MOUNT"
 mount "$INSTALL_PART" "$MOUNT"
 
+echo_sleep "Mount $ESP_PART..."
+mkdir -p "$MOUNT/boot"
+mount "$ESP_PART" "$MOUNT/boot"
+
 echo_sleep "Pacstrap..."
 pacstrap "$MOUNT" base base-devel linux linux-firmware
 
 echo_sleep "Gen fstab..."
 genfstab -U "$MOUNT" >> "$MOUNT/etc/fstab"
-sed -i 's/relatime/noatime/' "$MOUNT/etc/fstab"
+sed -i 's/relatime/noatime/g' "$MOUNT/etc/fstab"
 
 echo_sleep "Copy install script to /root..."
 cp config.sh chroot.sh dconf.conf "$MOUNT/root"

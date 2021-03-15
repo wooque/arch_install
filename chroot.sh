@@ -29,9 +29,11 @@ echo -e "$PASS\n$PASS" | passwd $NEWUSER
 
 echo_sleep "Install bootloader..."
 pacman -S --noconfirm $PACKAGES_BOOT
-grub-install $BOOT_DISK
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
+mkdir -p /boot/EFI/BOOT
+cp /boot/EFI/GRUB/grubx64.efi /boot/EFI/BOOT/BOOTX64.EFI
 
 echo_sleep "Install packages..."
 pacman --noconfirm -S $PACKAGES
