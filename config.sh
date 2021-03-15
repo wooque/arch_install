@@ -23,7 +23,7 @@ PACKAGES="$PACKAGES_BASE $PACKAGES_DE $PACKAGES_FONTS $PACKAGES_APPS $PACKAGES_U
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 
 CRON="0 11,17,23 * * * bash -ic backup"
-FSTAB=("LABEL=PODACI /mnt/PODACI ext4 noatime,x-gvfs-show 0 0")
+FSTAB=("LABEL=PODACI /mnt/PODACI ext4 rw,noatime,x-gvfs-show 0 2")
 FONT_SANS="Liberation Sans"
 FONT_SERIF="Liberation Serif"
 FONT_MONOSPACE="Ubuntu Mono"
