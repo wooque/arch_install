@@ -18,7 +18,7 @@ PACKAGES_APPS="gedit gnome-calculator file-roller eog evince rhythmbox transmiss
 PACKAGES_UTILS="z htop ncdu rsync bluez-utils"
 PACKAGES_DEV="docker-compose code tk"
 PACKAGES_VM="qemu samba"
-PACKAGES_AUR="gnome-shell-extension-arch-update gnome-shell-extension-bluetooth-quick-connect-git dropbox viber insomnia-bin tableplus asdf-vm"
+PACKAGES_AUR="dropbox viber insomnia-bin tableplus asdf-vm"
 PACKAGES="$PACKAGES_BASE $PACKAGES_DE $PACKAGES_FONTS $PACKAGES_APPS $PACKAGES_UTILS $PACKAGES_DEV $PACKAGES_VM"
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 
