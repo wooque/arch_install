@@ -1,17 +1,17 @@
 #!/bin/bash
-ESP_PART="/dev/sda1"
-INSTALL_PART="/dev/sda2"
+ESP_PART="/dev/nvme0n1p1"
+INSTALL_PART="/dev/nvme0n1p2"
 MOUNT=/mnt
 
 NEWUSER="vuk"
 PASS="pass"
 NEWUSER_GROUPS="docker"
-TIMEZONE="/usr/share/zoneinfo/Europe/Belgrade"
+TIMEZONE="Europe/Belgrade"
 HOSTNAME="battlestation"
 LOCALE="en_US.UTF-8"
 
-PACKAGES_BOOT="intel-ucode"
-PACKAGES_BASE="nano man-db bash-completion cronie tlp crda libva-intel-driver git"
+PACKAGES_BOOT="amd-ucode"
+PACKAGES_BASE="nano man-db bash-completion cronie tlp crda libva-mesa-driver git"
 PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gnome-backgrounds gnome-keyring gnome-tweaks chrome-gnome-shell gnome-shell-extension-appindicator"
 PACKAGES_FONTS="noto-fonts-emoji ttf-liberation ttf-ubuntu-font-family ttf-dejavu ttf-droid"
 PACKAGES_APPS="gedit gnome-calculator file-roller eog evince rhythmbox transmission-gtk chromium mpv gimp libreoffice-fresh"

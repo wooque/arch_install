@@ -2,7 +2,7 @@
 . /root/config.sh
 
 echo_sleep "Setup time..."
-ln -sf "$TIMEZONE" /etc/localtime
+ln -sf "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
 hwclock --systohc
 systemctl enable systemd-timesyncd
 
@@ -35,7 +35,7 @@ echo "timeout 0" >> /boot/loader/loader.conf
 cat >> /boot/loader/entries/arch.conf << EOF
 title   Arch Linux
 linux   /vmlinuz-linux
-initrd  /intel-ucode.img
+initrd  /amd-ucode.img
 initrd  /initramfs-linux.img
 options root="UUID=$INSTALL_UUID" rw loglevel=3 quiet
 EOF
