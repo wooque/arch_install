@@ -37,7 +37,7 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /amd-ucode.img
 initrd  /initramfs-linux.img
-options root="UUID=$INSTALL_UUID" rw loglevel=3 quiet
+options root="UUID=$INSTALL_UUID" rw loglevel=3 quiet mitigations=off iommu=soft
 EOF
 
 echo_sleep "Install packages..."
