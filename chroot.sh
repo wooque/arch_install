@@ -56,6 +56,19 @@ echo_sleep "Setup systemd tweaks..."
 sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
 
+echo_sleep "Setup tlp..."
+sed -i 's/#CPU_SCALING_GOVERNOR_ON_AC=powersave/CPU_SCALING_GOVERNOR_ON_AC=schedutil/' /etc/tlp.conf
+sed -i 's/#CPU_SCALING_GOVERNOR_ON_BAT=powersave/CPU_SCALING_GOVERNOR_ON_BAT=powersave/' /etc/tlp.conf
+sed -i 's/#PCIE_ASPM_ON_AC=default/PCIE_ASPM_ON_AC=default/' /etc/tlp.conf
+sed -i 's/#PCIE_ASPM_ON_BAT=default/PCIE_ASPM_ON_BAT=powersupersave/' /etc/tlp.conf
+sed -i 's/#RADEON_POWER_PROFILE_ON_AC=default/RADEON_POWER_PROFILE_ON_AC=default/' /etc/tlp.conf
+sed -i 's/#RADEON_POWER_PROFILE_ON_BAT=default/RADEON_POWER_PROFILE_ON_BAT=low/' /etc/tlp.conf
+sed -i 's/#RADEON_DPM_STATE_ON_AC=performance/RADEON_DPM_STATE_ON_AC=performance/' /etc/tlp.conf
+sed -i 's/#RADEON_DPM_STATE_ON_BAT=battery/RADEON_DPM_STATE_ON_BAT=battery/' /etc/tlp.conf
+sed -i 's/#RADEON_DPM_PERF_LEVEL_ON_AC=auto/RADEON_DPM_PERF_LEVEL_ON_AC=auto/' /etc/tlp.conf
+sed -i 's/#RADEON_DPM_PERF_LEVEL_ON_BAT=auto/RADEON_DPM_PERF_LEVEL_ON_BAT=low/' /etc/tlp.conf
+sed -i 's/#WOL_DISABLE=Y/WOL_DISABLE=Y/' /etc/tlp.conf
+
 echo_sleep "Setup fonts..."
 cat >> /etc/fonts/local.conf << EOF
 <?xml version="1.0"?>
