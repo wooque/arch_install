@@ -12,7 +12,7 @@ LOCALE="en_US.UTF-8"
 
 PACKAGES_BOOT="amd-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool powertop crda libva-mesa-driver git"
-PACKAGES_DE="gdm gnome-control-center networkmanager gnome-terminal nautilus gvfs-mtp gnome-keyring gnome-tweaks"
+PACKAGES_DE="pipewire-pulse gdm gnome-control-center networkmanager gnome-terminal nautilus gvfs-mtp gnome-keyring gnome-tweaks"
 PACKAGES_FONTS="noto-fonts noto-fonts-emoji ttf-liberation ttf-ubuntu-font-family ttf-droid ttf-dejavu"
 PACKAGES_APPS="gedit gnome-calculator file-roller eog evince rhythmbox transmission-gtk chromium mpv gimp libreoffice-fresh"
 PACKAGES_UTILS="z htop radeontop ncdu rsync bluez-utils youtube-dl seahorse"

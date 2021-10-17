@@ -52,8 +52,10 @@ systemctl enable $SERVICES
 echo_sleep "Setup cron..."
 echo "$CRON" >> "/var/spool/cron/$NEWUSER"
 
-echo_sleep "Disable Bluetooth AVRCP..."
-sed -i 's/load-module module-bluetooth-discover/load-module module-bluetooth-discover avrcp_absolute_volume=false/' /etc/pulse/default.pa
+echo_sleep "Disable Bluetooth hardware volume..."
+mkdir -p /etc/pipewire/media-session.d
+cp /usr/share/pipewire/media-session.d/bluez-monitor.conf /etc/pipewire/media-session.d/
+sed -i 's/#bluez5.enable-hw-volume = true/bluez5.enable-hw-volume = false/' /etc/pipewire/media-session.d/bluez-monitor.conf
 
 echo_sleep "Setup systemd tweaks..."
 sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
