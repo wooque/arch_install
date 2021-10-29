@@ -8,7 +8,7 @@ PASS="pass"
 NEWUSER_GROUPS="docker"
 TIMEZONE="Europe/Belgrade"
 HOSTNAME="battlestation"
-LOCALE="en_US.UTF-8"
+LOCALE="en_GB.UTF-8"
 
 PACKAGES_BOOT="amd-ucode"
 PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool powertop crda libva-mesa-driver git"
