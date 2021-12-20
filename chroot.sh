@@ -18,9 +18,6 @@ cat >> /etc/hosts << EOF
 ::1 localhost
 EOF
 
-echo "Enter password for root"
-echo -e "$PASS\n$PASS" | passwd
-
 echo_sleep "Create user..."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 useradd -g wheel -m $NEWUSER
