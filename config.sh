@@ -18,7 +18,7 @@ PACKAGES_APPS="gedit gnome-calculator file-roller eog evince rhythmbox transmiss
 PACKAGES_UTILS="z htop radeontop ncdu rsync bluez-utils imagemagick yt-dlp seahorse"
 PACKAGES_DEV="docker docker-compose nodejs npm tk"
 PACKAGES_VM="qemu samba"
-PACKAGES_AUR="dropbox viber vscodium-bin vscodium-bin-marketplace insomnia-bin beekeeper-studio-bin asdf-vm slack-desktop"
+PACKAGES_AUR="dropbox viber visual-studio-code-bin insomnia-bin beekeeper-studio-bin asdf-vm slack-desktop"
 PACKAGES="$PACKAGES_BASE $PACKAGES_DE $PACKAGES_FONTS $PACKAGES_APPS $PACKAGES_UTILS $PACKAGES_DEV $PACKAGES_VM"
 SERVICES="gdm NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 
