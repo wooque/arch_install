@@ -19,7 +19,7 @@ cat >> /etc/hosts << EOF
 EOF
 
 echo_sleep "Create user..."
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 useradd -g wheel -m $NEWUSER
 echo "Enter password for $NEWUSER"
 echo -e "$PASS\n$PASS" | passwd $NEWUSER
@@ -34,11 +34,14 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /amd-ucode.img
 initrd  /initramfs-linux.img
-options root="UUID=$INSTALL_UUID" rw loglevel=3 quiet mitigations=off iommu=soft
+options root="UUID=$INSTALL_UUID" rw quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_level=3 mitigations=off amd_iommu=off
 EOF
 
+echo_sleep "Disable pcspkr..."
+echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+
 echo_sleep "Install packages..."
-pacman --noconfirm -S $PACKAGES
+pacman -S --noconfirm $PACKAGES
 
 echo_sleep "Setup user groups..."
 usermod -aG "$NEWUSER_GROUPS" "$NEWUSER"
@@ -49,29 +52,41 @@ systemctl enable $SERVICES
 echo_sleep "Setup cron..."
 echo "$CRON" >> "/var/spool/cron/$NEWUSER"
 
-echo_sleep "Disable Bluetooth hardware volume..."
-mkdir -p /etc/pipewire/media-session.d
-cp /usr/share/pipewire/media-session.d/bluez-monitor.conf /etc/pipewire/media-session.d/
-sed -i 's/#bluez5.enable-hw-volume = true/bluez5.enable-hw-volume = false/' /etc/pipewire/media-session.d/bluez-monitor.conf
-
 echo_sleep "Setup systemd tweaks..."
-sed -i 's/#SystemMaxUse=/SystemMaxUse=50M/' /etc/systemd/journald.conf
+sed -i 's/#SystemMaxUse=/SystemMaxUse=10M/' /etc/systemd/journald.conf
 sed -i 's/#Storage=external/Storage=none/' /etc/systemd/coredump.conf
+
+echo_sleep "Setup autologin..."
+mkdir  /etc/systemd/system/getty@tty1.service.d
+cat >> /etc/systemd/system/getty@tty1.service.d/override.conf << EOF
+[Service]
+Type=simple
+ExecStart=
+ExecStart=-/usr/bin/agetty --skip-login --nonewline --noissue --autologin $NEWUSER --noclear %I \$TERM
+EOF
+
+echo_sleep "Setup iwd as NetworkManager backend..."
+cat >> /etc/NetworkManager/conf.d/iwd.conf <<EOF
+[device]
+wifi.backend=iwd
+EOF
+
+echo_sleep "Disable Bluetooth auto-enable"
+sed -i 's/#AutoEnable=true/AutoEnable=false/' /etc/bluetooth/main.conf
+
+echo_sleep "Disable Bluetooth hardware volume..."
+mkdir -p /etc/wireplumber/bluetooth.lua.d
+cp /usr/share/wireplumber/bluetooth.lua.d/50-bluez-config.lua /etc/wireplumber/bluetooth.lua.d
+sed -i 's/\-\-\["bluez5.enable\-hw\-volume"\] = true/\["bluez5.enable\-hw\-volume"\] = false/' /etc/wireplumber/bluetooth.lua.d/50-bluez-config.lua
 
 echo_sleep "Setup TLP..."
 cat >> /etc/tlp.d/custom.conf << EOF
-CPU_SCALING_MIN_FREQ_ON_AC=1400000
-CPU_SCALING_MAX_FREQ_ON_AC=2000000
-CPU_SCALING_MIN_FREQ_ON_BAT=1400000
-CPU_SCALING_MAX_FREQ_ON_BAT=1400000
-CPU_BOOST_ON_AC=1
-CPU_BOOST_ON_BAT=0
+CPU_SCALING_GOVERNOR_ON_AC=schedutil
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
 PLATFORM_PROFILE_ON_AC=performance
 PLATFORM_PROFILE_ON_BAT=low-power
 RADEON_DPM_PERF_LEVEL_ON_AC=auto
 RADEON_DPM_PERF_LEVEL_ON_BAT=low
-RADEON_DPM_STATE_ON_AC=performance
-RADEON_DPM_STATE_ON_BAT=battery
 PCIE_ASPM_ON_AC=default
 PCIE_ASPM_ON_BAT=powersupersave
 EOF
@@ -117,21 +132,36 @@ cat >> /etc/fonts/local.conf << EOF
       <double>96</double>
     </edit>
   </match>
-  <alias>
+  <alias binding="strong">
     <family>serif</family>
-    <prefer><family>$FONT_SERIF</family></prefer>
+    <prefer>
+    <family>Liberation Serif</family>
+    <family>DejaVu Serif</family>
+    <family>Noto Color Emoji</family>
+    <family>Symbola</family>
+    </prefer>
   </alias>
-  <alias>
+  <alias binding="strong">
     <family>sans-serif</family>
-    <prefer><family>$FONT_SANS</family></prefer>
+    <prefer>
+    <family>Liberation Sans</family>
+    <family>DejaVu Sans</family>
+    <family>Noto Color Emoji</family>
+    <family>Symbola</family>
+    </prefer>
   </alias>
-  <alias>
+  <alias binding="strong">
     <family>sans</family>
-    <prefer><family>$FONT_SANS</family></prefer>
+    <prefer>
+    <family>Liberation Sans</family>
+    <family>DejaVu Sans</family>
+    <family>Noto Color Emoji</family>
+    <family>Symbola</family>
+    </prefer>
   </alias>
   <alias>
     <family>monospace</family>
-    <prefer><family>$FONT_MONOSPACE</family></prefer>
+    <prefer><family>DejaVu Sans Mono</family></prefer>
   </alias>
   <alias binding="same">
     <family>Helvetica</family>
@@ -159,8 +189,8 @@ sudo -u $NEWUSER git fetch --set-upstream origin master
 sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git remote set-url origin "git@github.com:$DOTFILES_GITHUB.git"
 
-echo_sleep "Load dconf..."
-sudo -u $NEWUSER dbus-launch dconf load / < /root/dconf.conf
+echo_sleep "Fix GTK font antialiasing..."
+sudo -u $NEWUSER dbus-launch gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
@@ -178,6 +208,7 @@ sudo -u $NEWUSER sh -c "yes | yay -S --nodiffmenu --nocleanmenu --noprovides --r
 rm -f /root/config.sh /root/chroot.sh /root/dconf.conf
 
 echo_sleep "Clean pacman/yay cache..."
-yes | yay -Scc
+yes | pacman -Scc
+rm -rf /home/$NEWUSER/.cache/yay
 
 exit
