@@ -15,7 +15,6 @@ echo_sleep "Set hosts..."
 echo "$HOSTNAME" > /etc/hostname
 cat >> /etc/hosts << EOF
 127.0.0.1 localhost
-::1 localhost
 EOF
 
 echo_sleep "Create user..."

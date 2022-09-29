@@ -17,9 +17,9 @@ PACKAGES_DE="phonon-qt5-gstreamer plasma-desktop plasma-wayland-session plasma-n
 PACKAGES_FONTS="noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation ttf-dejavu"
 PACKAGES_APPS="kate mate-calc spectacle ark gwenview qt5-imageformats okular juk transmission-qt kdiff3 mpv gimp libreoffice-fresh firefox"
 PACKAGES_UTILS="z htop radeontop ncdu rsync imagemagick yt-dlp ranger neofetch"
-PACKAGES_DEV="docker docker-compose tk typescript-language-server npm tokei"
+PACKAGES_DEV="docker docker-compose tk nodejs npm yarn go redis tokei"
 PACKAGES_VM="qemu-desktop samba"
-PACKAGES_AUR="brave-bin viber slack-desktop visual-studio-code-bin beekeeper-studio-appimage dropbox insomnia-bin asdf-vm "
+PACKAGES_AUR="brave-bin viber slack-desktop visual-studio-code-bin beekeeper-studio-bin dropbox insomnia-bin asdf-vm "
 PACKAGES="$PACKAGES_HW $PACKAGES_BASE $PACKAGES_FONTS $PACKAGES_DE $PACKAGES_APPS $PACKAGES_UTILS $PACKAGES_DEV $PACKAGES_VM"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 
