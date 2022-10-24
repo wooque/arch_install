@@ -64,12 +64,6 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --skip-login --nonewline --noissue --autologin $NEWUSER --noclear %I \$TERM
 EOF
 
-echo_sleep "Setup iwd as NetworkManager backend..."
-cat >> /etc/NetworkManager/conf.d/iwd.conf <<EOF
-[device]
-wifi.backend=iwd
-EOF
-
 echo_sleep "Disable Bluetooth auto-enable"
 sed -i 's/#AutoEnable=true/AutoEnable=false/' /etc/bluetooth/main.conf
 

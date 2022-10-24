@@ -12,7 +12,7 @@ LOCALE="en_US.UTF-8"
 
 PACKAGES_BOOT="amd-ucode"
 PACKAGES_HW="libva-mesa-driver amdvlk"
-PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool powertop wireless-regdb git openssh wireplumber pipewire-pulse pipewire-jack iwd fuse2 efibootmgr"
+PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool powertop wireless-regdb git openssh wireplumber pipewire-pulse pipewire-jack fuse2 efibootmgr"
 PACKAGES_DE="phonon-qt5-gstreamer plasma-desktop plasma-wayland-session plasma-nm plasma-pa kscreen powerdevil bluedevil khotkeys kinfocenter kde-gtk-config breeze-gtk xdg-desktop-portal xdg-desktop-portal-kde konsole dolphin kdegraphics-thumbnailers ffmpegthumbs kdialog plasma-workspace-wallpapers discover packagekit-qt5 kwalletmanager libappindicator-gtk3"
 PACKAGES_FONTS="noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation ttf-dejavu"
 PACKAGES_APPS="kate mate-calc spectacle ark gwenview qt5-imageformats okular juk transmission-qt kdiff3 mpv gimp libreoffice-fresh firefox"
