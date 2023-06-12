@@ -1,6 +1,6 @@
 #!/bin/bash
 ESP_PART="/dev/nvme0n1p1"
-INSTALL_PART="/dev/nvme0n1p2"
+INSTALL_PART="/dev/nvme0n1p5"
 MOUNT=/mnt
 
 NEWUSER="vuk"
@@ -11,20 +11,24 @@ HOSTNAME="pc"
 LOCALE="en_US.UTF-8"
 
 PACKAGES_BOOT="amd-ucode"
-PACKAGES_HW="libva-mesa-driver amdvlk"
-PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool powertop wireless-regdb git openssh wireplumber pipewire-pulse pipewire-jack fuse2 efibootmgr"
-PACKAGES_DE="phonon-qt5-gstreamer plasma-desktop plasma-wayland-session plasma-nm plasma-pa kscreen powerdevil bluedevil khotkeys kinfocenter kde-gtk-config breeze-gtk xdg-desktop-portal xdg-desktop-portal-kde konsole dolphin kdegraphics-thumbnailers ffmpegthumbs kdialog plasma-workspace-wallpapers discover packagekit-qt5 kwalletmanager libappindicator-gtk3"
+PACKAGES_BASE="nano man-db bash-completion cronie tlp ethtool wireless-regdb
+git openssh wireplumber pipewire-pulse pipewire-jack efibootmgr bluez"
+PACKAGES_DE="sway polkit foot swaybg waybar otf-font-awesome swayidle swaylock wofi
+mako kanshi xdg-desktop-portal-wlr grim slurp xorg-xwayland brightnessctl thunar gvfs gvfs-mtp
+tumbler ffmpegthumbnailer networkmanager pavucontrol bluez-utils playerctl"
 PACKAGES_FONTS="noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation ttf-dejavu"
-PACKAGES_APPS="kate mate-calc spectacle ark gwenview qt5-imageformats okular juk transmission-qt kdiff3 mpv gimp libreoffice-fresh firefox"
-PACKAGES_UTILS="z htop radeontop ncdu rsync imagemagick yt-dlp ranger neofetch"
-PACKAGES_DEV="docker docker-compose tk nodejs npm yarn go redis tokei"
-PACKAGES_VM="qemu-base qemu-ui-gtk qemu-audio-pa samba"
-PACKAGES_AUR="brave-bin viber slack-desktop visual-studio-code-bin beekeeper-studio-bin dropbox insomnia-bin asdf-vm "
-PACKAGES="$PACKAGES_HW $PACKAGES_BASE $PACKAGES_FONTS $PACKAGES_DE $PACKAGES_APPS $PACKAGES_UTILS $PACKAGES_DEV $PACKAGES_VM"
+PACKAGES_APPS="mousepad mate-calc xarchiver zip unzip ristretto webp-pixbuf-loader zathura
+zathura-pdf-poppler cmus transmission-gtk meld mpv libva-mesa-driver gimp libreoffice-fresh firefox
+nicotine+ signal-desktop"
+PACKAGES_UTILS="htop radeontop powertop ncdu rsync imagemagick yt-dlp ranger neofetch
+qemu-base qemu-ui-gtk qemu-audio-pa samba rclone"
+PACKAGES_DEV="docker docker-compose tk nodejs npm yarn"
+PACKAGES_AUR="viber visual-studio-code-bin beekeeper-studio-bin dropbox asdf-vm google-chrome"
+PACKAGES="$PACKAGES_BASE $PACKAGES_FONTS $PACKAGES_DE $PACKAGES_APPS $PACKAGES_UTILS $PACKAGES_DEV"
 SERVICES="NetworkManager bluetooth cronie tlp fstrim.timer docker.socket"
 
-CRON="0 11,17,23 * * * bash -ic backup"
-FSTAB=("LABEL=PODACI /mnt/PODACI ext4 rw,noatime,x-gvfs-show 0 0")
+CRON="0 17,23 * * * bash -ic backup"
+FSTAB=("LABEL=PODACI /mnt/PODACI ext4 rw,noatime,x-gvfs-show 0 1")
 DOTFILES_GITHUB="wooque/dotfiles"
 
 echo_sleep () { echo "$1"; sleep 1; }

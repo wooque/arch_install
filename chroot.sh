@@ -64,9 +64,6 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --skip-login --nonewline --noissue --autologin $NEWUSER --noclear %I \$TERM
 EOF
 
-echo_sleep "Disable Bluetooth auto-enable"
-sed -i 's/#AutoEnable=true/AutoEnable=false/' /etc/bluetooth/main.conf
-
 echo_sleep "Disable Bluetooth hardware volume..."
 mkdir -p /etc/wireplumber/bluetooth.lua.d
 cp /usr/share/wireplumber/bluetooth.lua.d/50-bluez-config.lua /etc/wireplumber/bluetooth.lua.d
@@ -181,9 +178,6 @@ sudo -u $NEWUSER git remote add origin "https://github.com/$DOTFILES_GITHUB"
 sudo -u $NEWUSER git fetch --set-upstream origin master
 sudo -u $NEWUSER git reset --hard origin/master
 sudo -u $NEWUSER git remote set-url origin "git@github.com:$DOTFILES_GITHUB.git"
-
-echo_sleep "Fix GTK font antialiasing..."
-sudo -u $NEWUSER dbus-launch gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 mkdir /tmp/aur
 chown $NEWUSER:wheel /tmp/aur
